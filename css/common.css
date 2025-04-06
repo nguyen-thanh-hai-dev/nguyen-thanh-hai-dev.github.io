@@ -1,14 +1,14 @@
 /* Back button CSS */
 .back-button {
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
 }
 
 .back-btn {
-    padding: 10px 20px;
+    padding: 5px 10px;
     background: linear-gradient(45deg, #ff6b00, #ff8f00);
     color: #fff;
     font-size: 18px;
