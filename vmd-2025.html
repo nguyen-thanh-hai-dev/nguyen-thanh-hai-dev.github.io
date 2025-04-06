@@ -9,15 +9,21 @@
     <link rel="stylesheet" href="./css/vmd.css">
     <link rel="icon" href="assets/images/favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="./css/common.css">
+    <meta name="author" content="TieuLinh Hota">
+    <meta name="generator" content="TieuLinh Hota | Vietnam Duel Master 2025">
 </head>
 <body>
     <div class="tournament-container">
         <div class="tournament-banner">
             <div class="banner-title">Vietnam Duel Masters 2025</div>
+            <div class="banner-title-v2">
+                <h2>Countdown to the VDM2025: <span id="countdown-timer"></span></h2>
+            </div>
         </div>
 
         <div class="section">
             <h2>Tournament Introduction</h2>
+            <p>Previously known as the <strong>Vietnam Duel Pro League</strong>, this tournament has been the premier Heroes of Magic III competition in Vietnam, bringing together top players from around the world. This year, it has been rebranded as the <strong>Vietnam Duel Master 2025.</strong></p>
             <p>The <strong>Vietnam Duel Master 2025</strong> tournament is the leading event for duel map players in the Heroes of Magic III community in Vietnam.</p>
             <p>This year, in addition to Vietnamese players, the tournament will also feature top players from the MDGA competition.</p>
             <p>Held online in April 2025, Vietnam Duel Master 2025 is not just a competition, but also a celebration of the Heroes 3 gaming community in Vietnam.</p>
@@ -35,10 +41,10 @@
                 <img src="./assets/images/avatars/cd_3.png" alt="CD" class="sponsor-avatar ml-10">
             </div>
             <p>
-                <span class="prize-pool">Prize pool:</strong> $1500
+                <span class="prize-pool">Main Prize Pool:</strong> $1500
             </p>
         
-            <h3 class="record-title">Prize for Tournament Records:</h3>
+            <h3 class="record-title-v2">Special Awards (Outside Main Prize Pool): 150$</h3>
             <ul class="prize-list">
                 <li><span class="prize-rank"><i class="fas fa-trophy"></i></span> <strong>Earliest break and win the game: $50</strong></li>
                 <li><span class="prize-rank"><i class="fas fa-trophy"></i></span> <strong>Most skeletons and win the game: $50 (minimum: 3000)</strong></li>
@@ -47,13 +53,13 @@
         </div>
         
 
-        <div class="section">
+        <div class="section tournament-rules">
             <h2>Tournament Rules</h2>
             <ul>
-                <li>Format: Use the official Duel 2.9b map template created by MKC.</li>
-                <li>Number of players: Up to 100 players based on the registration list.</li>
-                <li>Detailed tournament rules will be updated later.</li>
-                <li>The tournament results will be updated at <a href="https://challonge.com/vi/VDM25">https://challonge.com/vi/VDM25</a> </li>
+                <li><i class="fas fa-check-circle"></i> Format: Use the official <a href="https://www.h3templates.com/templates/duel-test">Duel 2.9b</a> map template created by MKC.</li>
+                <li><i class="fas fa-check-circle"></i> Number of players: Up to 100 players based on the registration list.</li>
+                <li><i class="fas fa-check-circle"></i> Detailed tournament rules will be updated later.</li>
+                <li><i class="fas fa-check-circle"></i> The tournament results will be updated at <a href="https://challonge.com/vi/VDM25">https://challonge.com/vi/VDM25</a></li>
             </ul>
         </div>
 
@@ -145,7 +151,49 @@
             </div>
         </div>
 
-        <!-- Danh sách nhà tài trợ -->
+        <div class="section">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li>
+                    <strong><i class="fas fa-edit"></i> How do I register for the tournament?</strong><br>
+                    You can register by joining the Facebook group or Discord link provided above.
+                </li>
+                <li>
+                    <strong><i class="fas fa-user-check"></i> What are the requirements to participate?</strong><br>
+                    You need to be a player of Horn of Abyss and have an online account.
+                </li>
+                <li>
+                    <strong><i class="fas fa-trophy"></i> What is the prize pool?</strong><br>
+                    The prize pool for the tournament is $1500, with an additional $150 awarded for special achievements.
+                </li>
+                <li>
+                    <strong><i class="fas fa-calendar-alt"></i> When is the registration period?</strong><br>
+                    Registration opens from April 15, 2025, to April 30, 2025 (GMT+7).
+                </li>
+            </ul>
+            
+        </div>
+        
+        <script>
+            var countDownDate = new Date("April 15, 2025 00:00:00 GMT+7").getTime();
+            var x = setInterval(function() {
+                var now = new Date().getTime();
+                var distance = countDownDate - now;
+        
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+                document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
+
         <div class="section">
             <h2>List of Sponsors</h2>
             <div class="grid">
