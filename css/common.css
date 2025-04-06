@@ -1,0 +1,41 @@
+/* Back button CSS */
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff6b00, #ff8f00);
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.7);
+    color: #fff;
+    text-decoration: none;
+}
+
+.back-btn:link, .back-btn:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    color: #fff;
+}
