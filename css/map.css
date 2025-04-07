@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow-x: hidden;
+    background-image: url("./../assets/images/root_theme.jpeg");
+    background-blend-mode: overlay;
+}
+
+.map-list-container {
+    background: rgba(20, 20, 40, 0.9);
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 0 40px rgba(255, 107, 0, 0.3), inset 0 0 10px rgba(255, 107, 0, 0.1);
+}
+
+.page-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+th, td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    font-family: "Orbitron", sans-serif;
+    font-size: 18px;
+    color: #ff6b00;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    font-size: 16px;
+    color: #b0b8c4;
+}
+
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff6b00, #ff8f00);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.8);
+}
+
+.back-button {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #ff6b00;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.7);
+}
