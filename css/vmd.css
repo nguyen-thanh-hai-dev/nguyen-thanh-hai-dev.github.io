@@ -8,11 +8,26 @@
 	color: coral !important;
 }
 
+.custom-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .custom-grid-item {
     display: flex;
     justify-content: center;  /* Căn giữa theo chiều ngang */
     align-items: center;      /* Căn giữa theo chiều dọc */
     text-align: center;       /* Đảm bảo văn bản trong item được căn giữa */
+}
+
+.custom-ics {
+	background-color: white !important;
+}
+
+.disable-cursor {
+	cursor: default !important;
 }
 
 a {
@@ -139,7 +154,7 @@ body {
 }
 
 .prize-pool {
-    font-size: 22px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -254,6 +269,14 @@ body {
 	border-radius: 50%;
 }
 
+.avatar-ics {
+	width: 400px;
+	height: 400px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	object-fit: contain;
+}
+
 .image-container {
 	display: flex;
 	justify-content: center;
@@ -269,6 +292,15 @@ body {
 	object-fit: cover;
 	border: 3px solid #f0ad4e;
 	border-radius: 50%;
+}
+
+.sponsor-avatar-ics {
+	width: 280px;
+	height: 280px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	object-fit: contain;
+	border: 3px solid #f0ad4e;
 }
 
 .tournament-container {
@@ -360,10 +392,19 @@ body {
 	.sponsor-avatar {
 		width: 100%;
 		height: auto;
-		max-width: 130px;
+		max-width: 90px;
 		object-fit: cover;
 		border: 3px solid #f0ad4e;
 		border-radius: 50%;
+	}
+
+	.sponsor-avatar-ics {
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		background-color: #ffffff;
+		object-fit: contain;
+		border: 3px solid #f0ad4e;
 	}
 
 	.prize-pool {
@@ -384,6 +425,14 @@ body {
 		object-fit: cover;
 		border-radius: 50%;
 	}
+
+	.avatar-ics {
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		background-color: #ffffff;
+		object-fit: contain;
+	}
 }
 
 .section ul li::before {
@@ -395,6 +444,10 @@ body {
 
 .section ul li {
 	list-style: none;
+}
+
+.grid-item p:focus {
+    outline: none;
 }
 
 .grid {
