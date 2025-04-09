@@ -435,6 +435,41 @@ body {
 	}
 }
 
+@media (min-width: 969px) and (max-width: 1200px) {
+	.avatar-v2 {
+		width: 140px;
+		height: 140px;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	.avatar-ics {
+		width: 140px !important;
+		height: 140px !important;
+		border-radius: 50%;
+		background-color: #ffffff;
+		object-fit: contain;
+	}
+
+	.sponsor-avatar {
+		width: 100%;
+		height: auto;
+		max-width: 90px;
+		object-fit: cover;
+		border: 3px solid #f0ad4e;
+		border-radius: 50%;
+	}
+
+	.sponsor-avatar-ics {
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		background-color: #ffffff;
+		object-fit: contain;
+		border: 3px solid #f0ad4e;
+	}
+}
+
 .section ul li::before {
 	/* content: '▸'; */
 	color: #ff6b00;
