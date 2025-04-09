@@ -4,6 +4,17 @@
 	box-sizing: border-box;
 }
 
+.color-coral {
+	color: coral !important;
+}
+
+.custom-grid-item {
+    display: flex;
+    justify-content: center;  /* Căn giữa theo chiều ngang */
+    align-items: center;      /* Căn giữa theo chiều dọc */
+    text-align: center;       /* Đảm bảo văn bản trong item được căn giữa */
+}
+
 a {
 	text-decoration: none;
 	color: #007bff;
@@ -232,6 +243,13 @@ body {
 .avatar-v2 {
 	width: 400px;
 	height: 400px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.avatar-v3 {
+	width: 120px;
+	height: 120px;
 	object-fit: cover;
 	border-radius: 50%;
 }
