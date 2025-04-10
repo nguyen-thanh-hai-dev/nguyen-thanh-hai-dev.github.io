@@ -347,42 +347,47 @@ body {
 }
 
 .banner-title {
-	position: absolute;
-	font-family: 'Orbitron', sans-serif;
-	font-size: 60px;
-	color: #fff;
-	text-transform: uppercase;
-	text-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 40px rgba(255, 107, 0, 0.6), 0 0 60px rgba(255, 107, 0, 0.4);
-	z-index: 1;
-	top: 1%;
-	left: 15%;
-	letter-spacing: 2px;
-	text-align: center;
-	font-weight: bold;
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 40px rgba(255, 107, 0, 0.6), 0 0 60px rgba(255, 107, 0, 0.4);
+    z-index: 1;
+    letter-spacing: 2px;
+    text-align: center;
+    font-weight: bold;
+	min-width: 500px;
+    /* Căn giữa */
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .banner-title-v2 {
-	position: absolute;
-	font-family: 'Orbitron', sans-serif;
-	font-size: 20px;
-	color: #fff;
-	text-transform: uppercase;
-	text-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 40px rgba(255, 107, 0, 0.6), 0 0 60px rgba(255, 107, 0, 0.4);
-	z-index: 1;
-	top: 95%;
-	left: 16%;
-	letter-spacing: 2px;
-	text-align: center;
-	font-weight: bold;
+    position: absolute;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 40px rgba(255, 107, 0, 0.6), 0 0 60px rgba(255, 107, 0, 0.4);
+    z-index: 1;
+    letter-spacing: 2px;
+    text-align: center;
+    font-weight: bold;
+	min-width: 600px;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Font size for mobile screens */
 @media (max-width: 968px) {
 	.banner-title {
-		font-size: 30px;
+		font-size: 40px;
 	}
 	.banner-title-v2 {
-		font-size: 6px;
+		font-size: 12px;
 	}
 
 	.section h2 {
@@ -536,4 +541,81 @@ body {
 /* Styling the list */
 .tournament-rules ul {
     list-style: none;
+}
+
+.tournament-rules {
+	background-color: #2e3b4e; /* Đồng bộ với background của các block khác */
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow đậm hơn chút để nổi bật */
+	font-family: 'Arial', sans-serif;
+	line-height: 1.6;
+	color: #ffffff; /* Chữ trắng để tương phản với nền xám */
+}
+
+.tournament-rules h2 {
+	display: flex;
+    color: #ff6b00;
+	font-size: 28px;
+	border-bottom: 2px solid #ffffff; /* Đường viền trắng */
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	font-weight: 600;
+}
+
+.tournament-rules ul {
+	list-style: none;
+	padding: 0;
+}
+
+.tournament-rules li {
+	margin-bottom: 15px;
+	display: flex;
+	align-items: flex-start;
+}
+
+.tournament-rules .fas {
+	color: #00cc00; /* Xanh lá sáng hơn để nổi trên nền xám */
+	margin-right: 10px;
+	font-size: 18px;
+	margin-top: 2px;
+}
+
+.tournament-rules a {
+	color: #66b3ff; /* Xanh nhạt để nổi bật và khác biệt */
+	text-decoration: none;
+}
+
+.tournament-rules .detailed-rules {
+	margin-left: 28px;
+	width: 100%;
+	margin-top: -15px;
+}
+
+.tournament-rules .detailed-rules p {
+	margin: 8px 0;
+	font-size: 16px;
+	color: #ffffff; /* Chữ trắng */
+}
+
+.tournament-rules .detailed-rules ul {
+	margin: 5px 0 10px 20px;
+}
+
+.tournament-rules .detailed-rules ul li {
+	margin-bottom: 5px;
+	font-size: 15px;
+	color: #ffffff; /* Chữ trắng */
+}
+
+.tournament-rules strong {
+	color: #ffffff; /* Chữ trắng đậm */
+	font-weight: 700;
+	min-width: 120px;
+}
+
+.tournament-rules .note {
+	font-style: italic;
+	color: #d9e0e8; /* Xám nhạt để làm nổi bật ghi chú */
+	font-size: 14px;
 }
