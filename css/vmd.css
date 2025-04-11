@@ -289,8 +289,8 @@ body {
 
 .sponsor-avatar,
 .sponsor-avatar-gif {
-	width: 242px; /* hoặc 242px nếu bạn muốn giữ nguyên */
-	height: 242px;
+	width: 400px; /* hoặc 242px nếu bạn muốn giữ nguyên */
+	height: 300px;
 	object-fit: cover;
 	border: 3px solid #f0ad4e;
 }
