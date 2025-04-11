@@ -256,18 +256,18 @@ body {
 }
 
 .avatar-v2 {
-	width: 350px; /* hoặc 242px nếu bạn muốn giữ nguyên */
-	height: 350px;
+	width: 50%; /* hoặc 242px nếu bạn muốn giữ nguyên */
+	height: 85%;
 	object-fit: cover;
 	border: 3px solid #f0ad4e;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 }
 
 .avatar-v3 {
-	width: 120px;
-	height: 120px;
+	width: 50%;
+	height: 50%;
 	object-fit: cover;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 }
 
 .avatar-ics {
@@ -414,10 +414,10 @@ body {
 	}
 
 	.avatar-v2 {
-		width: 180px;
-		height: 180px;
+		width: 50%;
+		height: 50%;
 		object-fit: cover;
-		border-radius: 50%;
+		/* border-radius: 50%; */
 	}
 
 	.avatar-ics {
@@ -434,7 +434,7 @@ body {
 		width: 140px;
 		height: 140px;
 		object-fit: cover;
-		border-radius: 50%;
+		/* border-radius: 50%; */
 	}
 
 	.avatar-ics {
