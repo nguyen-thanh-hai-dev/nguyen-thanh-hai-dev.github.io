@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map List | TieuLinh Hota</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="icon" href="assets/images/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./css/map.css">
+</head>
+<body>
+    <div class="installation-guide">
+        <h2 class="page-title">How to Install the Game & Map</h2>
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="showTab('english')">English</button>
+            <button class="tab-btn" onclick="showTab('vietnamese')">Tiếng Việt</button>
+        </div>
+        <div id="vietnamese" class="tab-content">
+            <h3>Hướng Dẫn Cài Đặt Game (Tiếng Việt)</h3>
+            <ol>
+                <li>Tải game từ liên kết: <a href="https://drive.google.com/file/d/1EH2QxLjmShpIwfiqoIOkRbvKL5I4wiZK/view">Link tải</a>.</li>
+                <li>Giải nén file <strong>"Heroes III Complete & Hota Path.rar"</strong> bằng WinRAR hoặc 7-Zip.</li>
+                <li>Chạy file <code>setup_heroes_of_might_and_magic_3_complete_4.0_(28740).exe</code> và làm theo hướng dẫn trên màn hình.</li>
+                <li>Lưu ý đường dẫn cài đặt khi chạy file trên – bạn sẽ cần nó cho bước tiếp theo.</li>
+                <li>Sau khi cài đặt xong, bạn đã có thể chơi phiên bản Heroes III Complete.</li>
+                <li>Để cài đặt bản mở rộng Horn of the Abyss (HotA), chạy file <code>HotA_1.7.2_setup.exe</code> và chọn đúng thư mục cài đặt ở bước trước.</li>
+                <li>Sau đó, bạn có thể chơi bản mở rộng bằng cách chạy file <code>h3hota HD.exe</code>.</li>
+                <li><strong>Tùy chọn:</strong> Nếu muốn chơi map duel, hãy tải template bên dưới và chép vào thư mục <code>HotA_RMGTemplates</code>.</li>
+            </ol>
+        </div>
+        
+        <div id="english" class="tab-content active">
+            <h3>Game Installation Guide (English)</h3>
+            <ol>
+                <li>Download the game from the following link: <a href="https://drive.google.com/file/d/1EH2QxLjmShpIwfiqoIOkRbvKL5I4wiZK/view">Download Link</a>.</li>
+                <li>Extract the <strong>"Heroes III Complete & Hota Path.rar"</strong> file using WinRAR or 7-Zip.</li>
+                <li>Run <code>setup_heroes_of_might_and_magic_3_complete_4.0_(28740).exe</code> and follow the on-screen instructions.</li>
+                <li>Note the installation path – you will need it in the next step.</li>
+                <li>Once installed, you can start playing the Heroes III Complete version.</li>
+                <li>To install the Horn of the Abyss (HotA) expansion, run <code>HotA_1.7.2_setup.exe</code> and select the same installation folder from the previous step.</li>
+                <li>After that, launch the expansion by running <code>h3hota HD.exe</code>.</li>
+                <li><strong>Optional:</strong> To play duel maps, download the template below and place it into the <code>HotA_RMGTemplates</code> folder.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="map-list-container">
+        <h1 class="page-title">Maps List</h1>
+        <table class="map-list">
+            <thead>
+                <tr>
+                    <th>Map Name</th>
+                    <th>Author</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Duel 2.9a</td>
+                    <td>MKC</td>
+                    <td><a href="/maps/duel_2.9a.h3t" class="download-btn">Download</a></td>
+                </tr>
+                <tr>
+                    <td>Duel 2.9 T+</td>
+                    <td>MKC</td>
+                    <td><a href="/maps/duel_2.9a_t+.h3t" class="download-btn">Download</a></td>
+                </tr>
+                <tr>
+                    <td>DUEL 2.9b RC4</td>
+                    <td>MKC</td>
+                    <td><a href="/maps/duel_2.9b_rc4.h3t" class="download-btn">Download</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="back-button">
+        <a href="http://tieulinhhota.com" class="back-btn">
+            <i class="fas fa-home"></i> Back Home
+        </a>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`button[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

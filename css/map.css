@@ -10,21 +10,18 @@ body {
     color: #e0e0e0;
     line-height: 1.6;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 40px;
-    overflow-x: hidden;
     background-image: url("./../assets/images/root_theme.jpeg");
     background-blend-mode: overlay;
 }
 
-.map-list-container {
+.map-list-container, .installation-guide, .back-button {
     background: rgba(20, 20, 40, 0.9);
     border-radius: 15px;
     padding: 40px;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto 20px; /* Căn giữa và thêm khoảng cách dưới */
     box-shadow: 0 0 40px rgba(255, 107, 0, 0.3), inset 0 0 10px rgba(255, 107, 0, 0.1);
 }
 
@@ -82,8 +79,10 @@ td {
 }
 
 .back-button {
-    margin-top: 40px;
+    padding: 20px; /* Giảm padding để nhỏ gọn hơn */
     text-align: center;
+    background: none; /* Xóa nền để chỉ giữ nút */
+    box-shadow: none; /* Xóa bóng để gọn gàng */
 }
 
 .back-btn {
@@ -105,9 +104,87 @@ td {
     box-shadow: 0 0 20px rgba(255, 107, 0, 0.7);
 }
 
+/* Installation Guide Section */
+.installation-guide {
+    padding: 40px;
+}
+
+.tab-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: #333;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 107, 0, 0.3);
+}
+
+.tab-btn:hover {
+    background: #555;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+.tab-btn.active {
+    background: linear-gradient(45deg, #ff6b00, #ff8f00);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.7);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: rgba(30, 30, 50, 0.95);
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    color: #b0b8c4;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+}
+
+.tab-content ol {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.tab-content li {
+    margin-bottom: 10px;
+}
+
+.tab-content a {
+    color: #ff8f00;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.tab-content a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
-    .map-list-container {
+    .map-list-container, .installation-guide {
         padding: 20px;
     }
 
@@ -132,6 +209,15 @@ td {
         font-size: 14px;
         padding: 10px 20px;
     }
+
+    .tab-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .tab-content h3 {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -155,6 +241,21 @@ td {
     .back-btn {
         font-size: 14px;
         padding: 8px 18px;
+    }
+
+    .tab-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-btn {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+
+    .tab-content {
+        padding: 15px;
     }
 }
 
@@ -181,4 +282,27 @@ td {
         font-size: 12px;
         padding: 8px 16px;
     }
+
+    .tab-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .tab-content h3 {
+        font-size: 18px;
+    }
+
+    .tab-content ol {
+        padding-left: 15px;
+        font-size: 14px;
+    }
+}
+
+code {
+    background-color: #2d2d2d;
+    color: #ffcc66;           /* Màu chữ nổi bật, dễ đọc */
+    padding: 2px 6px;               /* Tăng khoảng cách cho dễ nhìn */
+    font-family: 'Courier New', Courier, monospace;  /* Font monospace */
+    border-radius: 4px;             /* Bo góc nhẹ nhàng */
+    font-size: 0.95em;              /* Nhỏ hơn một chút so với văn bản thường */
 }
