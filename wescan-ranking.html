@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Thống kê Donate</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap">
   <link rel="icon" href="assets/images/favicon.jpg" type="image/x-icon">
@@ -13,6 +16,51 @@
         box-sizing: border-box;
       }
 
+      #date-filter {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+      }
+      
+      #date-filter label {
+        font-weight: bold;
+      }
+      
+      #date-filter input[type="text"] {
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        min-width: 140px;
+        transition: border-color 0.3s;
+      }
+      
+      #date-filter input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      h2 a {
+        text-decoration: none;
+        font-family: "Orbitron", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+        position: relative;
+        margin-left: 35%;
+      }
+      
+      h2 a:hover {
+        text-decoration: underline;
+      }
+      
       #load-data {
         background: linear-gradient(45deg, #ff6b00, #ff8f00);
         color: #fff;
@@ -104,7 +152,7 @@
       }
       
       #date-filter label {
-        color: #e0e0e0;
+        color: #a42626;
         font-family: "Roboto", sans-serif;
         font-size: 14px;
       }
@@ -293,12 +341,15 @@
     <div id="loading">Đang tải dữ liệu...</div>
   </div>
 
-  <h2>Bảng xếp hạng Donate</h2>
+  <h2>
+    Bảng xếp hạng Donate Wescan
+    <p><a href="https://wescan.vn/tieulinhhota" target="_blank">TieuLinh Hota</a></p>
+  </h2>
   <div id="date-filter">
     <label for="from-date">Từ ngày:</label>
-    <input type="date" id="from-date" value="2022-01-01">
+    <input type="text" id="from-date" value="2022-01-01">
     <label for="to-date">Đến ngày:</label>
-    <input type="date" id="to-date">
+    <input type="text" id="to-date">
     <button id="load-data" onclick="loadData()">Tìm kiếm</button>
   </div>
   <div id="date-range"></div>
@@ -325,6 +376,17 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script>
+
+    flatpickr("#from-date", {
+        locale: "vn", // tiếng Việt
+        dateFormat: "Y-m-d" // Format giống input type="date"
+    });
+
+    flatpickr("#to-date", {
+        locale: "vn", // tiếng Việt
+        dateFormat: "Y-m-d" // Format giống input type="date"
+    });
+
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('to-date').value = today;
 
@@ -357,8 +419,6 @@
           return res.json();
         })
         .then(data => {
-          console.log('API Response:', data); // Debug dữ liệu API
-
           if (!data || !data.data || !data.data.items) {
             throw new Error('Dữ liệu API không hợp lệ hoặc trống');
           }
@@ -397,8 +457,6 @@
             document.querySelector("#donatorTable tbody").innerHTML = rows.join("");
             document.getElementById("total-amount").textContent = totalAmount.toLocaleString() + " VND";
             document.getElementById("total-times").textContent = totalTimes + " lần";
-
-            console.log(rows);
           }
 
           if ($.fn.dataTable.isDataTable('#donatorTable')) {
