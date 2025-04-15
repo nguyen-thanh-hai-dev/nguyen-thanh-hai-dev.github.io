@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thống kê Donate</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vn.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap">
+  <link rel="icon" href="assets/images/favicon.jpg" type="image/x-icon">
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #date-filter {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+      }
+      
+      #date-filter label {
+        font-weight: bold;
+      }
+      
+      #date-filter input[type="text"] {
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        min-width: 140px;
+        transition: border-color 0.3s;
+      }
+      
+      #date-filter input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      h2 a {
+        text-decoration: none;
+        font-family: "Orbitron", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+        position: relative;
+        margin-left: 35%;
+      }
+      
+      h2 a:hover {
+        text-decoration: underline;
+      }
+      
+      #load-data {
+        background: linear-gradient(45deg, #ff6b00, #ff8f00);
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        box-shadow: 0 0 5px rgba(255, 107, 0, 0.3), 0 4px 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      #load-data:hover {
+        background: linear-gradient(45deg, #ff8f00, #ff6b00);
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.5), 0 4px 15px rgba(255, 107, 0, 0.7);
+      }
+      
+      #load-data:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      #load-data:active {
+        background: linear-gradient(45deg, #ff6b00, #ff4500);
+        transform: translateY(2px);
+      }
+      
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #e0e0e0;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        overflow-x: hidden;
+        background-image: url("http://tieulinhhota.com/assets/images/root_theme.jpeg");
+        background-blend-mode: overlay;
+        position: relative;
+      }
+      
+      h2 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+        position: relative;
+      }
+      
+      h2::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background: #ff6b00;
+        bottom: -8px;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+        box-shadow: 0 0 10px #ff6b00;
+      }
+      
+      h2:hover::after {
+        transform: scaleX(1);
+      }
+      
+      #date-range {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        color: #b0b8c4;
+        font-style: italic;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px rgba(255, 107, 0, 0.3);
+      }
+      
+      #date-filter {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      
+      #date-filter label {
+        color: #a42626;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+      }
+      
+      #date-filter input[type="date"] {
+        background: rgba(20, 20, 40, 0.9);
+        color: #e0e0e0;
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        border-radius: 5px;
+        padding: 8px;
+        transition: box-shadow 0.3s ease;
+      }
+      
+      #date-filter input[type="date"]:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      #date-filter input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(0.8) brightness(1.5);
+      }
+      
+      #stats {
+        background: rgba(20, 20, 40, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        font-size: 16px;
+        line-height: 1.8;
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        animation: glow 2s infinite alternate;
+        min-height: 80px;
+      }
+      
+      #stats strong {
+        color: #ff6b00;
+        text-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+      }
+      
+      #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(20, 20, 40, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      
+      #loading {
+        font-size: 18px;
+        color: #b0b8c4;
+        text-shadow: 0 0 5px rgba(255, 107, 0, 0.3);
+      }
+      
+      table {
+        width: 100%;
+        background: rgba(20, 20, 40, 0.9);
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+      
+      table.visible {
+        opacity: 1;
+      }
+      
+      table.dataTable thead th {
+        background: linear-gradient(45deg, #ff6b00, #ff8f00);
+        color: #fff;
+        font-family: "Orbitron", sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 15px;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        border-bottom: 2px solid rgba(255, 107, 0, 0.5);
+      }
+      
+      table.dataTable tbody td {
+        color: #e0e0e0;
+        font-size: 14px;
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        transition: background 0.3s ease;
+      }
+      
+      table.dataTable tbody tr:hover td {
+        background: rgba(255, 107, 0, 0.1);
+      }
+      
+      .dataTables_wrapper .dataTables_filter {
+        margin-bottom: 20px;
+      }
+      
+      .dataTables_wrapper .dataTables_filter label {
+        color: #e0e0e0;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+      }
+      
+      .dataTables_wrapper .dataTables_filter input {
+        background: rgba(20, 20, 40, 0.9);
+        color: #e0e0e0;
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        border-radius: 5px;
+        padding: 8px;
+        transition: box-shadow 0.3s ease;
+      }
+      
+      .dataTables_wrapper .dataTables_filter input:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 40px rgba(255, 107, 0, 0.5);
+        }
+      }
+      
+      @media (max-width: 992px) {
+        body {
+          padding: 20px;
+        }
+      
+        h2 {
+          font-size: 28px;
+        }
+      
+        #stats {
+          padding: 15px;
+          font-size: 14px;
+        }
+      
+        table.dataTable thead th {
+          font-size: 14px;
+          padding: 10px;
+        }
+      
+        table.dataTable tbody td {
+          font-size: 12px;
+          padding: 10px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        h2 {
+          font-size: 24px;
+        }
+      
+        #date-range {
+          font-size: 14px;
+        }
+      
+        #stats {
+          padding: 10px;
+          font-size: 12px;
+        }
+      
+        .dataTables_wrapper .dataTables_filter input {
+          padding: 6px;
+          font-size: 12px;
+        }
+      
+        #date-filter {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+  </style>
+</head>
+<body>
+
+  <div id="loading-overlay">
+    <div id="loading">Đang tải dữ liệu...</div>
+  </div>
+
+  <h2>
+    Bảng xếp hạng Donate Wescan
+    <p><a href="https://wescan.vn/tieulinhhota" target="_blank">TieuLinh Hota</a></p>
+  </h2>
+  <div id="date-filter">
+    <label for="from-date">Từ ngày:</label>
+    <input type="text" id="from-date" value="2022-01-01">
+    <label for="to-date">Đến ngày:</label>
+    <input type="text" id="to-date">
+    <button id="load-data" onclick="loadData()">Tìm kiếm</button>
+  </div>
+  <div id="date-range"></div>
+
+  <div id="stats">
+    <strong>Tổng số lần được donate:</strong> <span id="total-times">Đang tính...</span><br>
+    <strong>Tổng số tiền được donate:</strong> <span id="total-amount">Đang tính...</span>
+  </div>
+
+  <table id="donatorTable" class="display">
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Số tiền</th>
+        <th>Thực nhận</th>
+        <th>Số lần</th>
+        <th>Nhóm</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+
+    flatpickr("#from-date", {
+        locale: "vn", // tiếng Việt
+        dateFormat: "Y-m-d" // Format giống input type="date"
+    });
+
+    flatpickr("#to-date", {
+        locale: "vn", // tiếng Việt
+        dateFormat: "Y-m-d" // Format giống input type="date"
+    });
+
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('to-date').value = today;
+
+    function formatDateForDisplay(dateStr) {
+      const parts = dateStr.split('-');
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+
+    function formatDateForApi(dateStr) {
+      return dateStr.replace(/-/g, '/');
+    }
+
+    function loadData() {
+      const fromDate = document.getElementById('from-date').value;
+      const toDate = document.getElementById('to-date').value;
+      const apiUrl = `https://wescan.vn/api/v1/donator_ranks?user_id=88005c37c9964a7583913ad116b26d74&sort_by=base_price&sort_type=desc&limit=1000&from_date=${formatDateForApi(fromDate)}&to_date=${formatDateForApi(toDate)}`;
+
+      document.getElementById('loading-overlay').style.display = 'flex';
+      document.getElementById('date-range').textContent = `📅 Dữ liệu từ: ${formatDateForDisplay(fromDate)} đến ${formatDateForDisplay(toDate)}`;
+
+      if ($.fn.DataTable.isDataTable('#donatorTable')) {
+        $('#donatorTable').DataTable().destroy();
+      }
+
+      fetch(apiUrl)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(data => {
+          if (!data || !data.data || !data.data.items) {
+            throw new Error('Dữ liệu API không hợp lệ hoặc trống');
+          }
+
+          const rows = [];
+          let totalAmount = 0;
+          let totalTimes = 0;
+          let rankIndex = 0;
+
+          data.data.items.forEach(item => {
+            if (item.ranks && Array.isArray(item.ranks)) {
+              item.ranks.forEach(rank => {
+                rankIndex++;
+                const starIcon = rankIndex <= 3 ? '⭐ ' : '';
+                rows.push(`
+                  <tr>
+                    <td>${starIcon}${rank.name || 'Không xác định'}</td>
+                    <td>${(rank.amount || 0).toLocaleString()}</td>
+                    <td>${(rank.real_amount || 0).toLocaleString()}</td>
+                    <td>${rank.times || 0}</td>
+                    <td>${rank.group || 'Không có'}</td>
+                  </tr>
+                `);
+                totalAmount += rank.amount || 0;
+                totalTimes += rank.times || 0;
+              });
+            }
+          });
+
+          // Nếu không có dữ liệu, hiển thị thông báo
+          if (rows.length === 0) {
+            document.querySelector("#donatorTable tbody").innerHTML = '<tr><td colspan="5">Không có dữ liệu hiển thị</td></tr>';
+            document.getElementById("total-amount").textContent = "0 VND";
+            document.getElementById("total-times").textContent = "0 lần";
+          } else {
+            document.querySelector("#donatorTable tbody").innerHTML = rows.join("");
+            document.getElementById("total-amount").textContent = totalAmount.toLocaleString() + " VND";
+            document.getElementById("total-times").textContent = totalTimes + " lần";
+          }
+
+          if ($.fn.dataTable.isDataTable('#donatorTable')) {
+            $('#donatorTable').DataTable().clear().destroy();
+          }
+
+          $('#donatorTable').DataTable({
+            paging: false,
+            info: false,
+            order: [[1, 'desc']],
+            language: {
+              search: "Tìm kiếm:",
+              zeroRecords: "Không có kết quả.",
+              emptyTable: "Không có dữ liệu hiển thị"
+            }
+          });
+
+          // Ẩn loading overlay và hiển thị bảng
+          document.getElementById('loading-overlay').style.display = 'none';
+          document.getElementById('donatorTable').classList.add('visible');
+        })
+        .catch(err => {
+          console.error('Lỗi:', err);
+          document.getElementById('loading').textContent = "Lỗi khi tải dữ liệu!";
+          document.querySelector("#donatorTable tbody").innerHTML = '<tr><td colspan="5">Lỗi khi tải dữ liệu</td></tr>';
+          document.getElementById('loading-overlay').style.display = 'none';
+          document.getElementById('donatorTable').classList.add('visible');
+        });
+    }
+
+    // Load initial data
+    loadData();
+
+    // Add event listeners for date inputs
+    // document.getElementById('from-date').addEventListener('change', loadData);
+    // document.getElementById('to-date').addEventListener('change', loadData);
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9309c3221836b025',t:'MTc0NDcwMjQ4NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
