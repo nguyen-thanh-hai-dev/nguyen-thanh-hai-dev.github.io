@@ -1,28 +1,5 @@
 -- !donate --
-$(eval
-  const u = "$(user)", channel = "TieuLinh Hota";
-  const r = $(urlfetch json http://tieulinhhota.com/assets/random.json);
-  const goldOptions = [5000, 10000, 15000, 20000];
-  let gold = goldOptions[Math.floor(Math.random() * goldOptions.length)];
-  const rand = Math.random();
-  const list = rand < 0.05 ? r.high : r.low;
-  if (rand < 0.05) gold *= 2;
-  list[Math.floor(Math.random() * list.length)]
-    .replace("{user}", u)
-    .replace("{channel}", channel)
-    .replace("{gold}", gold)
-    .replace("{emoji}", r.emojis[Math.floor(Math.random() * r.emojis.length)]);
-)
+$(eval  const a="$(user)",b="TieuLinh Hota",c=$(urlfetch json http://tieulinhhota.com/assets/random.json),d=[5e3,1e4,15e3,2e4],e=Math.random(),f=e<.05?c.high:c.low,g=d[Math.floor(Math.random()*d.length)]*(e<.05?2:1),h=f[Math.floor(Math.random()*f.length)];  h.replace("{user}",a).replace("{channel}",b).replace("{gold}",g).replace("{emoji}",c.emojis[Math.floor(Math.random()*c.emojis.length)]))
 
 -- !bless -- 
-$(eval
-  const u = "$(user)", channel = "TieuLinh Hota", gold = 10000, rand = Math.random();
-  const r = $(urlfetch json http://tieulinhhota.com/assets/random.json);
-  const getM = (list) =>
-    list[Math.floor(Math.random() * list.length)]
-      .replace("{user}", u)
-      .replace("{channel}", channel)
-      .replace("{gold}", gold)
-      .replace("{emoji}", r.emojis[Math.floor(Math.random() * r.emojis.length)]);
-   getM(r.medium);
-)
+$(eval  const a="$(user)",b="TieuLinh Hota",c=$(urlfetch json http://tieulinhhota.com/assets/random.json),d=[5e3,1e4,15e3,2e4],e=Math.random(),f=e<.05?c.high:c.low,g=d[Math.floor(Math.random()*d.length)]*(e<.05?2:1),h=f[Math.floor(Math.random()*f.length)];  h.replace("{user}",a).replace("{channel}",b).replace("{gold}",g).replace("{emoji}",c.emojis[Math.floor(Math.random()*c.emojis.length)]))
