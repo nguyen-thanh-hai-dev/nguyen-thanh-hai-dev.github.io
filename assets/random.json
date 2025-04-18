@@ -29,5 +29,6 @@
     "Behemoth gục ngã trước anh hùng {user}, {channel} nhận {gold} vàng chiến lợi phẩm! {emoji}",
     "Anh hùng {user} mở cổng Tower, tìm thấy {gold} vàng cho {channel}! {emoji}",
     "Phượng hoàng tái sinh để lại tro vàng, {user} nhặt được {gold} vàng tặng {channel}! {emoji}"
-  ]
+  ],
+  "emojis": ["🪙", "💰", "💎", "🔥", "💫", "🧭", "📦"]
 }
