@@ -1,8 +1,8 @@
 {
-  "high_probability": [
+  "high": [
     "🍀 {user} mang trong mình sức mạnh của vận mệnh, mỗi bước đi là một phép thuật vô biên, mở ra chiến thắng huy hoàng và ban tặng {gold} vàng cho {channel} từ những điều kỳ diệu không thể cản phá! 🌟💥"
   ],
-  "medium_probability": [
+  "medium": [
     "Tướng quân {user} triệu hồi cơn bão ma thuật, chúc {channel} thống trị mọi chiến trường! 🧙‍♂️⚡️",
     "Hiệp sĩ {user} cưỡi bạch ưng Griffin, tuyên bố: \"{channel} sẽ bất bại như Fortress!\" 🦅🛡️",
     "Từ rừng sâu Rampart, {user} gửi lời tiên tri: \"{channel} sẽ thắng lớn!\" 🌳✨",
@@ -18,7 +18,7 @@
     "Witch {user} pha chế độc dược trong đầm lầy, ban phép may mắn cho {channel}! 🐍🌿",
     "Elementalist {user} khống chế bốn nguyên tố, gửi sức mạnh vũ trụ tới {channel}! 🌪️🔥🌊🌍"
   ],
-  "low_probability": [
+  "low": [
     "Anh hùng {user} đột kích hầm mộ Necromancer, mang về {gold} vàng cho {channel}! {emoji}",
     "Anh hùng {user} hạ gục bầy rồng đen, mang về {gold} vàng cho {channel}! {emoji}",
     "Từ mỏ vàng Dungeon, {user} hiến tặng {channel} {gold} vàng lấp lánh! {emoji}",
