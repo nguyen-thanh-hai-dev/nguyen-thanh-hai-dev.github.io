@@ -1,0 +1,28 @@
+-- !donate --
+$(eval
+  const u = "$(user)", channel = "TieuLinh Hota";
+  const r = $(urlfetch json http://tieulinhhota.com/assets/random.json);
+  const goldOptions = [5000, 10000, 15000, 20000];
+  let gold = goldOptions[Math.floor(Math.random() * goldOptions.length)];
+  const rand = Math.random();
+  const list = rand < 0.05 ? r.high : r.medium;
+  if (rand < 0.05) gold *= 2;
+  list[Math.floor(Math.random() * list.length)]
+    .replace("{user}", u)
+    .replace("{channel}", channel)
+    .replace("{gold}", gold)
+    .replace("{emoji}", r.emojis[Math.floor(Math.random() * r.emojis.length)]);
+)
+
+-- !bless -- 
+$(eval
+  const u = "$(user)", channel = "TieuLinh Hota", gold = 10000, rand = Math.random();
+  const r = $(urlfetch json http://tieulinhhota.com/assets/random.json);
+  const getM = (list) =>
+    list[Math.floor(Math.random() * list.length)]
+      .replace("{user}", u)
+      .replace("{channel}", channel)
+      .replace("{gold}", gold)
+      .replace("{emoji}", r.emojis[Math.floor(Math.random() * r.emojis.length)]);
+   getM(r.medium);
+)
