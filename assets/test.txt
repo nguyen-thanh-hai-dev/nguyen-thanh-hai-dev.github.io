@@ -1,0 +1,45 @@
+$(eval
+const user = "$(user)";
+const channel = "TieuLinh Hota";
+const rand = Math.random();
+const gold = 10000;
+const specialAmount = 20000;
+
+if (rand > 0.95) {
+  `🍀 ${user} mang trong mình sức mạnh của vận mệnh, mỗi bước đi là một phép thuật vô biên, mở ra chiến thắng huy hoàng và ban tặng ${gold} vàng cho ${channel} từ những điều kỳ diệu không thể cản phá! 🌟💥`;
+} else if (rand < 0.5) {
+  const wishes = [
+    `Tướng quân ${user} triệu hồi cơn bão ma thuật, chúc ${channel} thống trị mọi chiến trường! 🧙‍♂️⚡️`,
+    `Hiệp sĩ ${user} cưỡi bạch ưng Griffin, tuyên bố: "${channel} sẽ bất bại như Fortress!" 🦅🛡️`,
+    `Từ rừng sâu Rampart, ${user} gửi lời tiên tri: "${channel} sẽ thắng lớn!" 🌳✨`,
+    `Pháp sư ${user} niệm chú cổ ngữ giữa làn khói tím: "Cầu cho ${channel} luôn đầy mana!" 📜🔮`,
+    `Barbarian ${user} ném rìu thần, chúc ${channel} quét sạch kẻ thù! 🪓🔥`,
+    `Paladin ${user} giương cờ Castle, hô vang: "${channel} sẽ vinh quang!" ⚜️🌟`,
+    `Kị sĩ rừng xanh ${user} cưỡi Green Dragon, chúc ${channel} may mắn và chiến thắng ngút trời! 🦄🍀`,
+    `Necromancer ${user} thì thầm trong bóng tối: "${channel} sẽ hồi sinh mạnh mẽ!" 💀🖤`,
+    `Sorceress ${user} tiên đoán qua quả cầu pha lê: "${channel} sẽ chiếm hết kho báu!" 🔮💫`,
+    `Knight ${user} quỳ dưới cờ thánh, thề: "${channel} sẽ trở thành huyền thoại!" ⚔️🏰`,
+    `Demoniac ${user} triệu hồi lửa địa ngục, ${channel} sẽ thiêu rụi mọi đối thủ! 🔥👹`,
+    `Pháp sư Tower ${user} đọc thần chú từ thư viện cổ, chúc ${channel} thông tuệ và chiến thắng! 📘❄️`,
+    `Witch ${user} pha chế độc dược trong đầm lầy, ban phép may mắn cho ${channel}! 🐍🌿`,
+    `Elementalist ${user} khống chế bốn nguyên tố, gửi sức mạnh vũ trụ tới ${channel}! 🌪️🔥🌊🌍`
+  ];
+  wishes[Math.floor(Math.random() * wishes.length)];
+} else {
+  const emojis = ["🪙", "💰", "💎", "🔥", "💫", "🧭", "📦"];
+  const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+  const messages = [
+    `Anh hùng ${user} đột kích hầm mộ Necromancer, mang về ${gold} vàng cho ${channel}! ${emoji}`,
+    `Anh hùng ${user} hạ gục bầy rồng đen, mang về ${gold} vàng cho ${channel}! ${emoji}`,
+    `Từ mỏ vàng Dungeon, ${user} hiến tặng ${channel} ${gold} vàng lấp lánh! ${emoji}`,
+    `Anh hùng ${user} tìm thấy hòm Pandora huyền thoại, ${channel} nhận ngay ${gold} vàng! ${emoji}`,
+    `Anh hùng ${user} khai phá mỏ Gems cổ xưa, ${channel} nhận ngay ${gold} vàng quý giá! ${emoji}`,
+    `Titan cổ đại gục ngã dưới đòn của ${user}, để lại ${gold} vàng cho ${channel}! ${emoji}`,
+    `Anh hùng ${user} khám phá ngôi đền cổ, ${channel} được ${gold} vàng thần bí! ${emoji}`,
+    `Behemoth gục ngã trước anh hùng ${user}, ${channel} nhận ${gold} vàng chiến lợi phẩm! ${emoji}`,
+    `Anh hùng ${user} mở cổng Tower, tìm thấy ${gold} vàng cho ${channel}! ${emoji}`,
+    `Phượng hoàng tái sinh để lại tro vàng, ${user} nhặt được ${gold} vàng tặng ${channel}! ${emoji}`
+  ];
+  messages[Math.floor(Math.random() * messages.length)];
+}
+)
