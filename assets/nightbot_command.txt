@@ -5,7 +5,7 @@ $(eval
   const goldOptions = [5000, 10000, 15000, 20000];
   let gold = goldOptions[Math.floor(Math.random() * goldOptions.length)];
   const rand = Math.random();
-  const list = rand < 0.05 ? r.high : r.medium;
+  const list = rand < 0.05 ? r.high : r.low;
   if (rand < 0.05) gold *= 2;
   list[Math.floor(Math.random() * list.length)]
     .replace("{user}", u)
