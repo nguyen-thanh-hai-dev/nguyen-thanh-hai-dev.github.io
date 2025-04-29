@@ -195,17 +195,6 @@
       color: #f72b2b;
     }
 
-    tr.blurred {
-      filter: blur(4px);
-      pointer-events: none;
-      opacity: 0.6;
-    }
-
-    tr:not(.blurred) {
-      filter: none;
-      pointer-events: auto;
-      opacity: 1;
-    }
 
     #checkboxTable tr:first-child {
       filter: none;
@@ -239,10 +228,10 @@
     <span class="close-btn" id="closeModal">&times;</span>
     <h2>Quy Tắc Trò Chơi</h2>
     <p>1. Mỗi nhiệm vụ hoàn thành sẽ mở một phần của lá cờ Việt Nam. Hoàn thành đủ 20 nhiệm vụ sẽ hé lộ toàn bộ bức tranh.</p>
-    <p>2. Chỉ khi hoàn thành nhiệm vụ mới được tick vào phần ✔.</p>
-    <p>3. Nhiệm vụ phải được thực hiện tuần tự — chỉ có thể làm nhiệm vụ tiếp theo sau khi đã hoàn thành nhiệm vụ trước đó.</p>
-    <p>4. Mỗi lần nhận donate 50.000 VND sẽ giảm 50% yêu cầu của nhiệm vụ: số lượng cần thực hiện giảm một nửa, hoặc nếu nhiệm vụ có hai điều kiện thì được miễn một trong hai.</p>
-    <p>5. Nhận được donate 100.000 VND cho phép bạn bỏ qua một nhiệm vụ đang làm.</p>
+    <p>2. Mỗi khi thi đấu 1 ván đấu hãy check xem có thoả mãn nhiệm vụ nào đó thì hãy ✔.</p>
+    <p>3. Một ván đấu có thể hoàn thành nhiều nhiệm vụ 1 lúc, ví dụ win 1 ván có combat có 200 mon 7 thì tất cả nhiệm vụ mon 7 đều xong.</p>
+    <p>4. Mỗi lần nhận donate 50.000 VND sẽ giảm 50% yêu cầu của nhiệm vụ (Chỉ định 1 nhiệm vụ) số lượng cần thực hiện giảm một nửa, hoặc nếu nhiệm vụ có hai điều kiện thì được miễn một trong hai.</p>
+    <p>5. Nhận được donate 100.000 VND cho phép bạn bỏ qua một nhiệm vụ đang làm (Tức hoàn thành luôn).</p>
     <p>6. Nhận được donate 150.000 VND cho phép viewer đổi nội dung nhiệm vụ đang làm (Yêu cầu confirm trước từ streamer tránh bị bóp zái).</p>
     <p>7. Mỗi mốc nhiệm vụ tương ứng với 50.000 VND. Hoàn thành đủ 20 mốc sẽ nhận thêm phần thưởng 500.000 VND, tổng cộng là 1.500.000 VND.</p>
     <p>8. Thời gian tham gia: từ 00:00 ngày 30/04 đến 23:59 ngày 01/05.</p>
@@ -267,13 +256,13 @@
       id: 2,
       content: "1867 - Pháp chiếm nốt miền Tây Nam Bộ",
       note: "Pháp hoàn tất việc chiếm Nam Kỳ.",
-      status: "Giành chiến thắng trên bất kỳ bản đồ nào, bắt buộc phải có combat."
+      status: "Giành chiến thắng trên bất kỳ bản đồ nào, không yêu cầu có combat."
     },
     {
       id: 3,
       content: "1884 - Hiệp ước Patenôt",
       note: "Việt Nam chính thức trở thành thuộc địa của Pháp.",
-      status: "Hoàn thành trận đấu có combat, sở hữu ít nhất 50 quái cấp 7 và giành chiến thắng"
+      status: "Hoàn thành trận đấu có combat, sở hữu ít nhất 25 quái cấp 7 và giành chiến thắng"
     },
     {
       id: 4,
@@ -291,7 +280,7 @@
       id: 6,
       content: "1919 - Gửi yêu sách đến Versailles",
       note: "Nguyễn Ái Quốc yêu cầu quyền tự quyết cho dân tộc.",
-      status: "Giành chiến thắng trận đấu có combat, sở hữu ít nhất 75 quái cấp 7"
+      status: "Giành chiến thắng trận đấu có combat, sở hữu ít nhất 50 quái cấp 7"
     },
     {
       id: 7,
@@ -309,13 +298,13 @@
       id: 9,
       content: "1941 - Hồ Chí Minh về nước",
       note: "Chuẩn bị lực lượng cho cách mạng.",
-      status: "Hoàn thành trận đấu có combat và bạn sở hữu ít nhất 100 quái cấp 7."
+      status: "Hoàn thành trận đấu có combat và bạn sở hữu ít nhất 75 quái cấp 7."
     },
     {
       id: 10,
       content: "1945 - Cách mạng Tháng Tám",
       note: "Giành chính quyền trên toàn quốc.",
-      status: "Nhận donate 50k hoặc đạt chuỗi 2 thắng hoặc 2 thua liên tiếp (Tính từ thời điểm làm nhiệm vụ)"
+      status: "Nhận 1 lần 200k donate hoặc có chuỗi 3 win hoặc 3 lose"
     },
     {
       id: 11,
@@ -351,13 +340,13 @@
       id: 16,
       content: "1965 - Mỹ đổ quân vào Việt Nam",
       note: "Chiến tranh Việt Nam bước vào giai đoạn khốc liệt.",
-      status: "Hoàn thành trận đấu có combat và bạn sở hữu kỹ năng Archery."
+      status: "Giành chiến thắng + có combat và bạn sở hữu kỹ năng Archery."
     },
     {
       id: 17,
       content: "1968 - Tổng tiến công Tết Mậu Thân",
       note: "Đòn tấn công bất ngờ làm chấn động nước Mỹ.",
-      status: "Hoàn thành trận đấu có combat và bạn sở hữu kỹ năng Diplomacy."
+      status: "Giành chiến thắng + có combat và bạn sở hữu kỹ năng Diplomacy."
     },
     {
       id: 18,
@@ -369,7 +358,7 @@
       id: 19,
       content: "1975 - Giải phóng miền Nam",
       note: "Thống nhất đất nước, chấm dứt chiến tranh.",
-      status: "Hoàn thành trận đấu có combat, sở hữu ít nhất 125 quái cấp 7 và giành chiến thắng."
+      status: "Hoàn thành trận đấu có combat, sở hữu ít nhất 100 quái cấp 7 và giành chiến thắng."
     }
   ];
   
