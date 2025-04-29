@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Event 30/4 & 1/5 TieuLinh Hota</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #222, #444);
+      color: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ff4c4c;
+      text-align: center;
+      font-size: 36px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+    }
+
+    .flag-container {
+      position: relative;
+      width: 400px;
+      height: 266px;
+      margin: 0 auto 30px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+      background-size: cover;
+      border: 3px solid #ff4c4c;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+      transition: transform 0.5s ease;
+    }
+
+    .flag-container:hover {
+      transform: rotate(0deg);
+    }
+
+    .overlay-piece {
+      position: absolute;
+      width: 5%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.7);
+      transition: opacity 0.4s ease, transform 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .overlay-piece:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 0, 0, 0.8);
+    }
+
+    .hidden {
+      opacity: 0;
+    }
+
+    table {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #444;
+      text-align: left;
+    }
+
+    th {
+      background-color: #222;
+      color: #ff4c4c;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    td {
+      background-color: #444;
+      color: #f5f5f5;
+      font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #555;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #666;
+    }
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ff4c4c;
+      background-color: transparent;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="checkbox"]:checked {
+      background-color: #ff4c4c;
+    }
+
+    input[type="checkbox"]:hover {
+      background-color: #f72b2b;
+    }
+
+    @media (max-width: 600px) {
+      .flag-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+      }
+      .overlay-piece {
+        height: 100%;
+      }
+    }
+
+    tr.selected {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr.selected td {
+      background-color: #4CAF50;
+    }
+
+    .rule-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1000;
+    }
+
+    .rule-button:hover {
+      background-color: #f72b2b;
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .rule-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(255, 76, 76, 0.7);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #333;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      color: #f5f5f5;
+    }
+
+    .close-btn {
+      color: #ff4c4c;
+      font-size: 30px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #f72b2b;
+    }
+
+    tr.blurred {
+      filter: blur(4px);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    tr:not(.blurred) {
+      filter: none;
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    #checkboxTable tr:first-child {
+      filter: none;
+      pointer-events: auto;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎉 Chào mừng ngày 30/4 – Giải phóng miền Nam 🇻🇳</h1>
+
+<div class="flag-container" id="flagContainer"></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>✔</th>
+      <th>Giai đoạn</th>
+      <th>Mốc Lịch Sử</th>
+      <th>Cốt truyện</th>
+    </tr>
+  </thead>
+  <tbody id="checkboxTable"></tbody>
+</table>
+
+<button id="ruleButton" class="rule-button">🎮 Quy Tắc</button>
+
+<div id="ruleModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h2>Quy Tắc Trò Chơi</h2>
+    <p>1. Mỗi nhiệm vụ hoàn thành sẽ mở một phần của lá cờ Việt Nam. Hoàn thành đủ 20 nhiệm vụ sẽ hé lộ toàn bộ bức tranh.</p>
+    <p>2. Nhiệm vụ phải được thực hiện tuần tự — chỉ có thể làm nhiệm vụ tiếp theo sau khi đã hoàn thành nhiệm vụ trước đó.</p>
+    <p>3. Mỗi lần nhận donate 50.000 VND sẽ giảm 50% yêu cầu của nhiệm vụ: số lượng cần thực hiện giảm một nửa, hoặc nếu nhiệm vụ có hai điều kiện thì được miễn một trong hai.</p>
+    <p>4. Nhận được donate 100.000 VND cho phép bạn bỏ qua một nhiệm vụ đang làm.</p>
+    <p>5. Nhận được donate 150.000 VND cho phép viewer đổi nội dung nhiệm vụ đang làm (Yêu cầu confirm trước từ streamer tránh bị bóp zái).</p>
+    <p>6. Mỗi mốc nhiệm vụ tương ứng với 50.000 VND. Hoàn thành đủ 20 mốc sẽ nhận thêm phần thưởng 500.000 VND, tổng cộng là 1.500.000 VND.</p>
+    <p>7. Thời gian tham gia: từ 00:00 ngày 30/04 đến 23:59 ngày 01/05.</p>
+  </div>
+</div>
+
+<script>
+    const data = [
+    {
+      id: 0,
+      content: "1858 - Pháp xâm lược Đà Nẵng",
+      note: "Mở đầu cuộc xâm lược của thực dân Pháp vào Việt Nam.",
+      status: "Hoàn thành trận đấu với người chơi nước ngoài trên bất kỳ bản đồ nào."
+    },
+    {
+      id: 1,
+      content: "1862 - Hiệp ước Nhâm Tuất",
+      note: "Pháp chiếm ba tỉnh miền Đông Nam Bộ.",
+      status: "Hoàn thành trận đấu với người chơi nước ngoài và bạn phải là người bị tấn công."
+    },
+    {
+      id: 2,
+      content: "1867 - Pháp chiếm nốt miền Tây Nam Bộ",
+      note: "Pháp hoàn tất việc chiếm Nam Kỳ.",
+      status: "Giành chiến thắng trên bất kỳ bản đồ nào, bắt buộc phải có combat."
+    },
+    {
+      id: 3,
+      content: "1884 - Hiệp ước Patenôt",
+      note: "Việt Nam chính thức trở thành thuộc địa của Pháp.",
+      status: "Hoàn thành trận đấu mà không sử dụng scouting (Note: Hoành thành trận đấu tức chỉ yêu cầu hoàn thành không yêu cầu giành chiến thắng.)."
+    },
+    {
+      id: 4,
+      content: "1905 - Phong trào Đông Du",
+      note: "Phan Bội Châu kêu gọi du học Nhật để cứu nước.",
+      status: "Hoàn thành trận đấu có combat và bạn sở hữu hai kỹ năng: Logistics & Pathfinding."
+    },
+    {
+      id: 5,
+      content: "1911 - Hồ Chí Minh ra đi tìm đường cứu nước",
+      note: "Khởi đầu hành trình cách mạng của Bác.",
+      status: "Hoàn thành trận đấu có combat và bạn sở hữu hai kỹ năng: Offense & Armorer."
+    },
+    {
+      id: 6,
+      content: "1919 - Gửi yêu sách đến Versailles",
+      note: "Nguyễn Ái Quốc yêu cầu quyền tự quyết cho dân tộc.",
+      status: "Giành chiến thắng một trận đấu (không yêu cầu combat)."
+    },
+    {
+      id: 7,
+      content: "1930 - Thành lập Đảng Cộng sản Việt Nam",
+      note: "Dưới sự lãnh đạo của Hồ Chí Minh.",
+      status: "Giành chiến thắng một trận đấu (yêu cầu có combat)."
+    },
+    {
+      id: 8,
+      content: "1930-1931 - Khởi nghĩa Yên Bái",
+      note: "Phong trào chống Pháp của Việt Nam Quốc Dân Đảng.",
+      status: "Hoàn thành trận đấu có combat và bạn có một trong hai kỹ năng: Tactics hoặc Ballistics."
+    },
+    {
+      id: 9,
+      content: "1941 - Hồ Chí Minh về nước",
+      note: "Chuẩn bị lực lượng cho cách mạng.",
+      status: "Hoàn thành trận đấu có combat và bạn sở hữu ít nhất 50 quái cấp 7."
+    },
+    {
+      id: 10,
+      content: "1945 - Cách mạng Tháng Tám",
+      note: "Giành chính quyền trên toàn quốc.",
+      status: "Nhận donate 50k hoặc đạt chuỗi 2 thắng hoặc 2 thua liên tiếp (Tính từ thời điểm làm nhiệm vụ)"
+    },
+    {
+      id: 11,
+      content: "1945 - Tuyên ngôn độc lập",
+      note: "Khai sinh nước Việt Nam Dân chủ Cộng hòa.",
+      status: "Hoàn thành trận đấu có combat và bạn có đủ 4 nguyên tố trong skill tree: Đất, Nước, Lửa, Gió."
+    },
+    {
+      id: 12,
+      content: "1946 - Bắt đầu kháng chiến chống Pháp",
+      note: "Cuộc kháng chiến toàn quốc bùng nổ.",
+      status: "Chiến thắng một trận đấu diễn ra trong tháng 1."
+    },
+    {
+      id: 13,
+      content: "1954 - Chiến thắng Điện Biên Phủ - Hiệp định Genève",
+      note: "Chấm dứt chiến tranh Đông Dương.",
+      status: "Hoàn thành trận đấu có combat mà không sử dụng quái cấp 7 (nếu có donate giảm một nửa thì được miễn điều kiện về quái)."
+    },
+    {
+      id: 14,
+      content: "1955 - Ngô Đình Diệm nắm quyền",
+      note: "Bắt đầu chính thể VNCH ở miền Nam.",
+      status: "Hoàn thành trận đấu có combat, không sử dụng Scouting và Logistics (không yêu cầu thắng)."
+    },
+    {
+      id: 15,
+      content: "1964 - Sự kiện Vịnh Bắc Bộ",
+      note: "Khởi đầu sự can thiệp quân sự trực tiếp của Mỹ.",
+      status: "Hoàn thành trận đấu có combat và giành chiến thắng."
+    },
+    {
+      id: 16,
+      content: "1965 - Mỹ đổ quân vào Việt Nam",
+      note: "Chiến tranh Việt Nam bước vào giai đoạn khốc liệt.",
+      status: "Hoàn thành trận đấu có combat và bạn sở hữu kỹ năng Archery."
+    },
+    {
+      id: 17,
+      content: "1968 - Tổng tiến công Tết Mậu Thân",
+      note: "Đòn tấn công bất ngờ làm chấn động nước Mỹ.",
+      status: "Hoàn thành trận đấu có combat và bạn sở hữu kỹ năng Diplomacy."
+    },
+    {
+      id: 18,
+      content: "1973 - Hiệp định Paris",
+      note: "Mỹ rút quân khỏi Việt Nam.",
+      status: "Hoàn thành trận đấu có combat và giành chiến thắng trong tháng 2."
+    },
+    {
+      id: 19,
+      content: "1975 - Giải phóng miền Nam",
+      note: "Thống nhất đất nước, chấm dứt chiến tranh.",
+      status: "Hoàn thành trận đấu có combat, sở hữu ít nhất 100 quái cấp 7 và giành chiến thắng."
+    }
+  ];
+  
+    const checkboxTable = document.getElementById('checkboxTable');
+    const flagContainer = document.getElementById('flagContainer');
+  
+    for (let i = 0; i < data.length; i++) {
+      const overlay = document.createElement('div');
+      overlay.classList.add('overlay-piece');
+      overlay.style.left = `${i * (100 / data.length)}%`;
+      overlay.dataset.index = i;
+      flagContainer.appendChild(overlay);
+    }
+  
+    for (let i = 0; i < data.length; i++) {
+      const row = data[i];
+  
+      const tr = document.createElement('tr');
+      if (i > 0) {
+        tr.classList.add('blurred');
+      }
+  
+      const tdCheckbox = document.createElement('td');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.dataset.index = row.id;
+      tdCheckbox.appendChild(checkbox);
+  
+      const tdContent = document.createElement('td');
+      tdContent.textContent = row.content;
+  
+      const tdNote = document.createElement('td');
+      tdNote.textContent = row.note;
+  
+      const tdStatus = document.createElement('td');
+      tdStatus.textContent = row.status;
+  
+      tr.appendChild(tdCheckbox);
+      tr.appendChild(tdContent);
+      tr.appendChild(tdNote);
+      tr.appendChild(tdStatus);
+      checkboxTable.appendChild(tr);
+    }
+  
+    // Handle checkbox changes
+    checkboxTable.addEventListener('change', (e) => {
+      if (e.target.type === 'checkbox') {
+        const index = parseInt(e.target.dataset.index);
+        const overlay = flagContainer.querySelector(`.overlay-piece[data-index="${index}"]`);
+        const row = e.target.closest('tr');
+  
+        if (e.target.checked) {
+          overlay.classList.add('hidden');
+          row.classList.add('selected');
+          // Unblur the next row if it exists
+          const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
+          if (nextRow) {
+            nextRow.classList.remove('blurred');
+          }
+        } else {
+          overlay.classList.remove('hidden');
+          row.classList.remove('selected');
+          // Re-blur the next row if it exists
+          const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
+          if (nextRow) {
+            nextRow.classList.add('blurred');
+          }
+        }
+      }
+    });
+  
+    // Modal functionality
+    const ruleButton = document.getElementById('ruleButton');
+    const ruleModal = document.getElementById('ruleModal');
+    const closeModal = document.getElementById('closeModal');
+  
+    ruleButton.addEventListener('click', () => {
+      ruleModal.style.display = 'block';
+    });
+  
+    closeModal.addEventListener('click', () => {
+      ruleModal.style.display = 'none';
+    });
+  
+    window.addEventListener('click', (event) => {
+      if (event.target === ruleModal) {
+        ruleModal.style.display = 'none';
+      }
+    });
+</script>
+
+</body>
+</html>
