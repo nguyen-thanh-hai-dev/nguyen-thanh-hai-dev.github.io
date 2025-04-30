@@ -1,364 +1,357 @@
 <!DOCTYPE html>
 <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <title>Event 30/4 & 1/5 TieuLinh Hota</title>
-        <link rel="icon" href="assets/images/favicon.jpg" type="image/x-icon">
-        <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
-        <script>
-            const firebaseConfig = {
-                apiKey: "AIzaSyBWG6exyWmdMZoOr-WJ-SOrYoBqxsP9F_w",
-                authDomain: "tieulinhhota-30-4.firebaseapp.com",
-                projectId: "tieulinhhota-30-4",
-                storageBucket: "tieulinhhota-30-4.firebasestorage.app",
-                messagingSenderId: "1080321938893",
-                appId: "1:1080321938893:web:75f0d28af7a647d493e084",
-                measurementId: "G-HKPZDZFZ8M"
-            };
-            const app = firebase.initializeApp(firebaseConfig);
-            const db = firebase.firestore();
-        </script>
-        <style>
-            #passwordInput {
-            width: 350px;
-            padding: 10px;
-            margin-bottom: 12px;
-            border: 2px solid #ff4c4c; /* Đường viền đỏ */
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Event 30/4 & 1/5 TieuLinh Hota</title>
+    <link rel="icon" href="http://tieulinhhota.com/assets/images/favicon.jpg" type="image/x-icon">
+    <style>
+        #passwordInput {
+        width: 350px;
+        padding: 10px;
+        margin-bottom: 12px;
+        border: 2px solid #ff4c4c; /* Đường viền đỏ */
+        border-radius: 8px;
+        background-color: #222; /* Nền đen */
+        color: white;
+        font-size: 18px;
+        font-family: 'Arial', sans-serif;
+        outline: none;
+        transition: all 0.3s ease;
+        }
+
+        #passwordInput::placeholder {
+        color: #bbb; /* Màu placeholder xám */
+        }
+
+        #passwordInput:focus {
+        border-color: #f72b2b; /* Đổi màu viền khi focus */
+        background-color: #333; /* Đổi nền khi focus */
+        }
+
+        #checkPasswordBtn {
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: #ff4c4c;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        }
+
+        #checkPasswordBtn:hover {
+        background-color: #f72b2b; /* Đổi màu nền khi hover */
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(255, 76, 76, 0.6);
+        }
+
+        #checkPasswordBtn:active {
+        transform: scale(0.98);
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #222, #444);
+            color: #f5f5f5;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff4c4c;
+            text-align: center;
+            font-size: 36px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+        }
+        .flag-container {
+            position: relative;
+            width: 400px;
+            height: 266px;
+            margin: 0 auto 30px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
+            background-size: cover;
+            border: 3px solid #ff4c4c;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            transition: transform 0.5s ease;
+        }
+        .flag-container:hover {
+            transform: rotate(0deg);
+        }
+        .overlay-piece {
+            position: absolute;
+            width: 5%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: opacity 0.4s ease, transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .overlay-piece:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+        .hidden {
+            opacity: 0;
+        }
+        table {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: #333;
             border-radius: 8px;
-            background-color: #222; /* Nền đen */
-            color: white;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #444;
+            text-align: left;
+        }
+        th {
+            background-color: #222;
+            color: #ff4c4c;
             font-size: 18px;
-            font-family: 'Arial', sans-serif;
-            outline: none;
-            transition: all 0.3s ease;
-            }
-
-            #passwordInput::placeholder {
-            color: #bbb; /* Màu placeholder xám */
-            }
-
-            #passwordInput:focus {
-            border-color: #f72b2b; /* Đổi màu viền khi focus */
-            background-color: #333; /* Đổi nền khi focus */
-            }
-
-            #checkPasswordBtn {
-            padding: 12px 24px;
+            letter-spacing: 1px;
+        }
+        td {
+            background-color: #444;
+            color: #f5f5f5;
             font-size: 16px;
-            font-weight: bold;
-            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #555;
+        }
+        tr:nth-child(odd) {
+            background-color: #666;
+        }
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff4c4c;
+            background-color: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="checkbox"]:checked {
             background-color: #ff4c4c;
+        }
+        input[type="checkbox"]:hover {
+            background-color: #f72b2b;
+        }
+        @media (max-width: 600px) {
+        .flag-container {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+        }
+        .overlay-piece {
+            height: 100%;
+        }
+        }
+        tr.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr.selected td {
+            background-color: #4CAF50;
+        }
+        .rule-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+        }
+        .rule-button:hover {
+            background-color: #f72b2b;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .rule-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255, 76, 76, 0.7);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #333;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            color: #f5f5f5;
+        }
+        .close-btn {
+            color: #ff4c4c;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: #f72b2b;
+        }
+        #checkboxTable tr:first-child {
+            filter: none;
+            pointer-events: auto;
+            opacity: 1;
+        }
+        #challengeModal .modal-content {
+            background-color: #2a2a2a;
+            color: #f5f5f5;
+            border-radius: 12px;
+            padding: 25px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(255, 76, 76, 0.4);
+        }
+        #challengeModal h2 {
+            color: #ff4c4c;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(255, 76, 76, 0.4);
+        }
+        #challengeList li {
+            background-color: #444;
+            border: 1px solid #555;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        #challengeList li:hover {
+            background-color: #555;
+            transform: scale(1.02);
+        }
+        #challengeModal input[type="text"] {
+            background-color: #333;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+        #challengeModal input[type="text"]:focus {
+            border-color: #ff4c4c;
+            outline: none;
+        }
+        #addChallenge {
+            background-color: #00b0ff;
+            color: white;
             border: none;
             border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 176, 255, 0.4);
             transition: all 0.3s ease;
-            margin-top: 10px;
-            }
+        }
 
-            #checkPasswordBtn:hover {
-            background-color: #f72b2b; /* Đổi màu nền khi hover */
+        #addChallenge:hover {
+            background-color: #0091cc;
             transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(255, 76, 76, 0.6);
-            }
+            box-shadow: 0 6px 15px rgba(0, 176, 255, 0.6);
+        }
 
-            #checkPasswordBtn:active {
-            transform: scale(0.98);
-            }
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background: linear-gradient(135deg, #222, #444);
-                color: #f5f5f5;
-                padding: 20px;
-            }
-            h1 {
-                color: #ff4c4c;
-                text-align: center;
-                font-size: 36px;
-                text-transform: uppercase;
-                margin-bottom: 30px;
-                letter-spacing: 2px;
-                text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
-            }
-            .flag-container {
-                position: relative;
-                width: 400px;
-                height: 266px;
-                margin: 0 auto 30px;
-                background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
-                background-size: cover;
-                border: 3px solid #ff4c4c;
-                box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
-                transition: transform 0.5s ease;
-            }
-            .flag-container:hover {
-                transform: rotate(0deg);
-            }
-            .overlay-piece {
-                position: absolute;
-                width: 5%;
-                height: 100%;
-                background-color: rgba(255, 255, 255, 0.7);
-                transition: opacity 0.4s ease, transform 0.3s ease;
-                border: 2px solid rgba(255, 255, 255, 0.6);
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            }
-            .overlay-piece:hover {
-                transform: scale(1.1);
-                background-color: rgba(255, 0, 0, 0.8);
-            }
-            .hidden {
-                opacity: 0;
-            }
-            table {
-                width: 100%;
-                max-width: 1400px;
-                margin: 0 auto;
-                border-collapse: collapse;
-                background: #333;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            th, td {
-                padding: 12px;
-                border-bottom: 1px solid #444;
-                text-align: left;
-            }
-            th {
-                background-color: #222;
-                color: #ff4c4c;
-                font-size: 18px;
-                letter-spacing: 1px;
-            }
-            td {
-                background-color: #444;
-                color: #f5f5f5;
-                font-size: 16px;
-            }
-            tr:nth-child(even) {
-                background-color: #555;
-            }
-            tr:nth-child(odd) {
-                background-color: #666;
-            }
-            input[type="checkbox"] {
-                width: 20px;
-                height: 20px;
-                border: 2px solid #ff4c4c;
-                background-color: transparent;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-            }
-            input[type="checkbox"]:checked {
-                background-color: #ff4c4c;
-            }
-            input[type="checkbox"]:hover {
-                background-color: #f72b2b;
-            }
-            @media (max-width: 600px) {
-            .flag-container {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 3 / 2;
-            }
-            .overlay-piece {
-                height: 100%;
-            }
-            }
-            tr.selected {
-                background-color: #4CAF50;
-                color: white;
-            }
-            tr.selected td {
-                background-color: #4CAF50;
-            }
-            .rule-button {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background-color: #ff4c4c;
-                color: white;
-                border: none;
-                padding: 15px 30px;
-                font-size: 18px;
-                font-weight: bold;
-                cursor: pointer;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-                transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-                z-index: 1000;
-            }
-            .rule-button:hover {
-                background-color: #f72b2b;
-                transform: scale(1.1);
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-            }
-            .rule-button:focus {
-                outline: none;
-                box-shadow: 0 0 0 4px rgba(255, 76, 76, 0.7);
-            }
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                padding-top: 60px;
-            }
-            .modal-content {
-                background-color: #333;
-                margin: 5% auto;
-                padding: 20px;
-                border-radius: 10px;
-                width: 80%;
-                max-width: 600px;
-                color: #f5f5f5;
-            }
-            .close-btn {
-                color: #ff4c4c;
-                font-size: 30px;
-                font-weight: bold;
-                position: absolute;
-                top: 10px;
-                right: 25px;
-                cursor: pointer;
-            }
-            .close-btn:hover {
-                color: #f72b2b;
-            }
-            #checkboxTable tr:first-child {
-                filter: none;
-                pointer-events: auto;
-                opacity: 1;
-            }
-            #challengeModal .modal-content {
-                background-color: #2a2a2a;
-                color: #f5f5f5;
-                border-radius: 12px;
-                padding: 25px;
-                max-height: 80vh;
-                overflow-y: auto;
-                box-shadow: 0 0 20px rgba(255, 76, 76, 0.4);
-            }
-            #challengeModal h2 {
-                color: #ff4c4c;
-                text-align: center;
-                margin-bottom: 20px;
-                text-shadow: 1px 1px 5px rgba(255, 76, 76, 0.4);
-            }
-            #challengeList li {
-                background-color: #444;
-                border: 1px solid #555;
-                padding: 10px 15px;
-                margin-bottom: 10px;
-                border-radius: 6px;
-                transition: transform 0.2s, background-color 0.3s;
-            }
-            #challengeList li:hover {
-                background-color: #555;
-                transform: scale(1.02);
-            }
-            #challengeModal input[type="text"] {
-                background-color: #333;
-                border: 1px solid #555;
-                color: #fff;
-                border-radius: 6px;
-                padding: 10px;
-                margin-bottom: 10px;
-                transition: border-color 0.3s;
-            }
-            #challengeModal input[type="text"]:focus {
-                border-color: #ff4c4c;
-                outline: none;
-            }
-            #addChallenge {
-                background-color: #00b0ff;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                padding: 10px 16px;
-                font-size: 16px;
-                font-weight: bold;
-                cursor: pointer;
-                box-shadow: 0 4px 10px rgba(0, 176, 255, 0.4);
-                transition: all 0.3s ease;
-            }
+        #addChallenge:active {
+            transform: scale(0.97);
+        }
 
-            #addChallenge:hover {
-                background-color: #0091cc;
-                transform: scale(1.05);
-                box-shadow: 0 6px 15px rgba(0, 176, 255, 0.6);
-            }
-
-            #addChallenge:active {
-                transform: scale(0.97);
-            }
-
-        </style>
-    </head>
-    <body>
-        <h1>🎉 Chào mừng ngày 30/4 – Giải phóng miền Nam Việt Nam</h1>
-        <div class="flag-container" id="flagContainer"></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>✔</th>
-                    <th>Giai đoạn</th>
-                    <th>Mốc Lịch Sử</th>
-                    <th>Cốt truyện</th>
-                </tr>
-            </thead>
-            <tbody id="checkboxTable"></tbody>
-        </table>
-        <button id="challengeButton" class="rule-button" style="bottom: 80px;">📜 Request thử thách</button>
-        <div id="challengeModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" id="closeChallengeModal">&times;</span>
-                <h2>Danh sách thử thách</h2>
-                <div>
-                    <input type="password" id="passwordInput" placeholder="Nhập mật khẩu để xóa thử thách" />
-                    <button id="checkPasswordBtn">Xác nhận mật khẩu</button>
-                </div>
-                <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                    <input id="nameInput" type="text" placeholder="Tên của bạn" 
-                           style="padding: 8px; width: 250px; border: 2px solid #ddd; border-radius: 5px; 
-                                  background-color: #f5f5f5; color: #333; font-size: 14px; 
-                                  font-family: Arial, sans-serif; outline: none; transition: border-color 0.3s;">
-                    
-                    <textarea id="challengeInput" placeholder="Nội dung thử thách" 
-                              style="padding: 8px; width: 250px; min-height: 100px; border: 2px solid #ddd; 
-                                     border-radius: 5px; background-color: #f5f5f5; color: #333; font-size: 14px; 
-                                     font-family: Arial, sans-serif; outline: none; resize: vertical; transition: border-color 0.3s;"></textarea>
-                    
-                    <button id="addChallenge" 
-                            style="padding: 8px 15px; width: 100px; background-color: #4CAF50; color: white; 
-                                   border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-family: Arial, sans-serif; 
-                                   transition: background-color 0.3s;">
-                        ➕
-                    </button>
-                </div>
-                <ul id="challengeList" style="list-style: none; padding-left: 0;"></ul>
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBWG6exyWmdMZoOr-WJ-SOrYoBqxsP9F_w",
+            authDomain: "tieulinhhota-30-4.firebaseapp.com",
+            projectId: "tieulinhhota-30-4",
+            storageBucket: "tieulinhhota-30-4.firebasestorage.app",
+            messagingSenderId: "1080321938893",
+            appId: "1:1080321938893:web:75f0d28af7a647d493e084",
+            measurementId: "G-HKPZDZFZ8M"
+        };
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+</head>
+<body>
+    <h1>🎉 Chào mừng ngày 30/4 – Giải phóng miền Nam Việt Nam</h1>
+    <div class="flag-container" id="flagContainer">
+        <!-- Dynamically generated overlay pieces -->
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>✔</th>
+                <th>Giai đoạn</th>
+                <th>Mốc Lịch Sử</th>
+                <th>Cốt truyện</th>
+            </tr>
+        </thead>
+        <tbody id="checkboxTable">
+            <!-- Dynamically generated table rows -->
+        </tbody>
+    </table>
+    <button id="challengeButton" class="rule-button" style="bottom: 80px;">📜 Request thử thách</button>
+    <div id="challengeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeChallengeModal">×</span>
+            <h2>Danh sách thử thách</h2>
+            <div>
+                <input type="password" id="passwordInput" placeholder="Nhập mật khẩu để xóa thử thách">
+                <button id="checkPasswordBtn">Xác nhận mật khẩu</button>
             </div>
-        </div>
-        <button id="ruleButton" class="rule-button">🎮 Quy Tắc</button>
-        <div id="ruleModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" id="closeModal">&times;</span>
-                <h2>Quy Tắc Trò Chơi</h2>
-                <p>1. Mỗi nhiệm vụ hoàn thành sẽ mở một phần của lá cờ Việt Nam. Hoàn thành đủ 20 nhiệm vụ sẽ hé lộ toàn bộ bức tranh.</p>
-                <p>2. Mỗi khi thi đấu 1 ván đấu hãy check xem có thoả mãn nhiệm vụ nào đó thì hãy ✔.</p>
-                <p>3. Một ván đấu có thể hoàn thành nhiều nhiệm vụ 1 lúc, ví dụ win 1 ván có combat có 200 mon 7 thì tất cả nhiệm vụ mon 7 đều xong.</p>
-                <p>4. Mỗi lần nhận donate 50.000 VND sẽ giảm 50% yêu cầu của nhiệm vụ (Chỉ định 1 nhiệm vụ) số lượng cần thực hiện giảm một nửa, hoặc nếu nhiệm vụ có hai điều kiện thì được miễn một trong hai.</p>
-                <p>5. Nhận được donate 100.000 VND cho phép bạn bỏ qua một nhiệm vụ đang làm (Tức hoàn thành luôn).</p>
-                <p>6. Nhận được donate 150.000 VND cho phép viewer đổi nội dung nhiệm vụ đang làm (Yêu cầu confirm trước từ streamer tránh bị bóp zái).</p>
-                <p>7. Mỗi mốc nhiệm vụ tương ứng với 50.000 VND. Hoàn thành đủ 20 mốc sẽ nhận thêm phần thưởng 500.000 VND, tổng cộng là 1.500.000 VND.</p>
-                <p>8. Thời gian tham gia: từ 00:00 ngày 30/04 đến 23:59 ngày 01/05.</p>
+            <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <input id="nameInput" type="text" placeholder="Tên của bạn" style="padding: 8px; width: 250px; border: 2px solid #ddd; border-radius: 5px; background-color: #f5f5f5; color: #333; font-size: 14px; font-family: Arial, sans-serif; outline: none; transition: border-color 0.3s;">
+                <textarea id="challengeInput" placeholder="Nội dung thử thách" style="padding: 8px; width: 250px; min-height: 100px; border: 2px solid #ddd; border-radius: 5px; background-color: #f5f5f5; color: #333; font-size: 14px; font-family: Arial, sans-serif; outline: none; resize: vertical; transition: border-color 0.3s;"></textarea>
+                <button id="addChallenge" style="padding: 8px 15px; width: 100px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-family: Arial, sans-serif; transition: background-color 0.3s;">➕</button>
             </div>
+            <ul id="challengeList" style="list-style: none; padding-left: 0;"></ul>
         </div>
-        <script>
+    </div>
+    <button id="ruleButton" class="rule-button">🎮 Quy Tắc</button>
+    <div id="ruleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">×</span>
+            <h2>Quy Tắc Trò Chơi</h2>
+            <p>1. Mỗi nhiệm vụ hoàn thành sẽ mở một phần của lá cờ Việt Nam. Hoàn thành đủ 20 nhiệm vụ sẽ hé lộ toàn bộ bức tranh.</p>
+            <p>2. Mỗi khi thi đấu 1 ván đấu hãy check xem có thoả mãn nhiệm vụ nào đó thì hãy ✔.</p>
+            <p>3. Một ván đấu có thể hoàn thành nhiều nhiệm vụ 1 lúc, ví dụ win 1 ván có combat có 200 mon 7 thì tất cả nhiệm vụ mon 7 đều xong.</p>
+            <p>4. Mỗi lần nhận donate 50.000 VND sẽ giảm 50% yêu cầu của nhiệm vụ (Chỉ định 1 nhiệm vụ) số lượng cần thực hiện giảm một nửa, hoặc nếu nhiệm vụ có hai điều kiện thì được miễn một trong hai.</p>
+            <p>5. Nhận được donate 100.000 VND cho phép bạn bỏ qua một nhiệm vụ đang làm (Tức hoàn thành luôn).</p>
+            <p>6. Nhận được donate 150.000 VND cho phép viewer đổi nội dung nhiệm vụ đang làm (Yêu cầu confirm trước từ streamer tránh bị bóp zái).</p>
+            <p>7. Mỗi mốc nhiệm vụ tương ứng với 50.000 VND. Hoàn thành đủ 20 mốc sẽ nhận thêm phần thưởng 500.000 VND, tổng cộng là 1.500.000 VND.</p>
+            <p>8. Thời gian tham gia: từ 00:00 ngày 30/04 đến 23:59 ngày 01/05.</p>
+        </div>
+    </div>
+    <script>
         const challengeButton = document.getElementById('challengeButton');
         const challengeModal = document.getElementById('challengeModal');
         const closeChallengeModal = document.getElementById('closeChallengeModal');
@@ -394,7 +387,12 @@
             const enteredPassword = passwordInput.value.trim();
             if (enteredPassword === 'tieulinhhota') {
                 isPasswordCorrect = true;
-                alert('Mật khẩu chính xác! Bạn có thể xóa thử thách.');
+                alert('Mật khẩu chính xác! Bạn có thể xóa thử thách và chỉnh sửa checkbox.');
+                // Enable all checkboxes
+                const checkboxes = document.querySelectorAll('#checkboxTable input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.disabled = false;
+                });
                 subscribeToChallengeChanges();
             } else {
                 isPasswordCorrect = false;
@@ -412,11 +410,7 @@
                 }
 
                 snapshot.forEach(doc => {
-                    const {
-                        name,
-                        content,
-                        time
-                    } = doc.data();
+                    const { name, content, time } = doc.data();
                     const li = document.createElement('li');
                     li.textContent = `[${time}] ⚔️ ${name}: ${content}`;
                     li.style.display = 'flex';
@@ -450,37 +444,38 @@
         }
 
         addChallengeBtn.addEventListener('click', async () => {
-    const name = nameInput.value.trim();
-    const content = challengeInput.value.trim();
+            const name = nameInput.value.trim();
+            const content = challengeInput.value.trim();
 
-    if (!name || !content) {
-        alert('Vui lòng nhập đầy đủ tên và thử thách.');
-        return;
-    }
+            if (!name || !content) {
+                alert('Vui lòng nhập đầy đủ tên và thử thách.');
+                return;
+            }
 
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Đảm bảo tháng 2 chữ số
-    const day = String(currentDate.getDate()).padStart(2, '0'); // Đảm bảo ngày 2 chữ số
-    const hours = String(currentDate.getHours()).padStart(2, '0'); // Đảm bảo giờ 2 chữ số
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0'); // Đảm bảo phút 2 chữ số
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const day = String(currentDate.getDate()).padStart(2, '0');
+            const hours = String(currentDate.getHours()).padStart(2, '0');
+            const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
 
-    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`; // Định dạng: yyyy-mm-dd hh:mm:ss
-    try {
-        await db.collection("challenges").add({
-            name: name, 
-            content: content,
-            time: formattedDate
+            try {
+                await db.collection("challenges").add({
+                    name: name,
+                    content: content,
+                    time: formattedDate
+                });
+
+                nameInput.value = '';
+                challengeInput.value = '';
+            } catch (err) {
+                alert(`Lỗi khi thêm thử thách: ${err.message}`);
+            }
         });
 
-        nameInput.value = '';
-        challengeInput.value = '';
-    } catch (err) {
-        alert(`Lỗi khi thêm thử thách: ${err.message}`);
-    }
-});
-
-        const data = [{
+        const data = [
+            {
                 id: 0,
                 content: "1858 - Pháp xâm lược Đà Nẵng",
                 note: "Mở đầu cuộc xâm lược của thực dân Pháp vào Việt Nam.",
@@ -605,6 +600,7 @@
         const checkboxTable = document.getElementById('checkboxTable');
         const flagContainer = document.getElementById('flagContainer');
 
+        // Generate overlay pieces
         for (let i = 0; i < data.length; i++) {
             const overlay = document.createElement('div');
             overlay.classList.add('overlay-piece');
@@ -613,9 +609,9 @@
             flagContainer.appendChild(overlay);
         }
 
+        // Generate table rows with disabled checkboxes
         for (let i = 0; i < data.length; i++) {
             const row = data[i];
-
             const tr = document.createElement('tr');
             if (i > 0) {
                 tr.classList.add('blurred');
@@ -625,6 +621,7 @@
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.dataset.index = row.id;
+            checkbox.disabled = true; // Disable checkbox by default
             tdCheckbox.appendChild(checkbox);
 
             const tdContent = document.createElement('td');
@@ -643,27 +640,65 @@
             checkboxTable.appendChild(tr);
         }
 
+        async function saveCheckboxState(index, checked) {
+            try {
+                const docRef = db.collection("checkbox_status").doc("global");
+                const doc = await docRef.get();
+                let checkedStatus = doc.exists ? doc.data().checkedStatus : {};
+                
+                if (checked) {
+                    checkedStatus[index] = true;
+                } else {
+                    delete checkedStatus[index];
+                }
+                
+                await docRef.set({ checkedStatus }, { merge: true });
+            } catch (err) {
+                console.error(`Lỗi khi lưu trạng thái checkbox: ${err.message}`);
+            }
+        }
+
+        async function loadCheckboxState() {
+            try {
+                const doc = await db.collection("checkbox_status").doc("global").get();
+                const checkedStatus = doc.exists ? doc.data().checkedStatus : {};
+                Object.keys(checkedStatus).forEach(index => {
+                    const checkbox = checkboxTable.querySelector(`input[data-index="${index}"]`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        handleCheckboxChange(checkbox, true);
+                    }
+                });
+            } catch (err) {
+                console.error(`Lỗi khi tải trạng thái checkbox: ${err.message}`);
+            }
+        }
+
+        function handleCheckboxChange(checkbox, isInit = false) {
+            const index = parseInt(checkbox.dataset.index);
+            const overlay = flagContainer.querySelector(`.overlay-piece[data-index="${index}"]`);
+            const row = checkbox.closest('tr');
+
+            if (checkbox.checked) {
+                overlay.classList.add('hidden');
+                row.classList.add('selected');
+                const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
+                if (nextRow) nextRow.classList.remove('blurred');
+            } else {
+                overlay.classList.remove('hidden');
+                row.classList.remove('selected');
+                const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
+                if (nextRow) nextRow.classList.add('blurred');
+            }
+
+            if (!isInit) {
+                saveCheckboxState(index, checkbox.checked);
+            }
+        }
+
         checkboxTable.addEventListener('change', (e) => {
             if (e.target.type === 'checkbox') {
-                const index = parseInt(e.target.dataset.index);
-                const overlay = flagContainer.querySelector(`.overlay-piece[data-index="${index}"]`);
-                const row = e.target.closest('tr');
-
-                if (e.target.checked) {
-                    overlay.classList.add('hidden');
-                    row.classList.add('selected');
-                    const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
-                    if (nextRow) {
-                        nextRow.classList.remove('blurred');
-                    }
-                } else {
-                    overlay.classList.remove('hidden');
-                    row.classList.remove('selected');
-                    const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
-                    if (nextRow) {
-                        nextRow.classList.add('blurred');
-                    }
-                }
+                handleCheckboxChange(e.target);
             }
         });
 
@@ -685,50 +720,10 @@
             }
         });
 
-        function handleCheckboxChange(checkbox, isInit = false) {
-            const index = parseInt(checkbox.dataset.index);
-            const overlay = flagContainer.querySelector(`.overlay-piece[data-index="${index}"]`);
-            const row = checkbox.closest('tr');
-
-            let checkedStatus = JSON.parse(localStorage.getItem('checkedStatus')) || {};
-
-            if (checkbox.checked) {
-                overlay.classList.add('hidden');
-                row.classList.add('selected');
-                checkedStatus[index] = true;
-
-                const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
-                if (nextRow) nextRow.classList.remove('blurred');
-            } else {
-                overlay.classList.remove('hidden');
-                row.classList.remove('selected');
-                delete checkedStatus[index];
-
-                const nextRow = checkboxTable.querySelector(`tr:nth-child(${index + 2})`);
-                if (nextRow) nextRow.classList.add('blurred');
-            }
-
-            if (!isInit) {
-                localStorage.setItem('checkedStatus', JSON.stringify(checkedStatus));
-            }
-        }
-
-        checkboxTable.addEventListener('change', (e) => {
-            if (e.target.type === 'checkbox') {
-                handleCheckboxChange(e.target);
-            }
-        });
-
+        // Load checkbox states when the page loads
         window.addEventListener('DOMContentLoaded', () => {
-            const checkedStatus = JSON.parse(localStorage.getItem('checkedStatus')) || {};
-            Object.keys(checkedStatus).forEach(index => {
-                const checkbox = checkboxTable.querySelector(`input[data-index="${index}"]`);
-                if (checkbox) {
-                    checkbox.checked = true;
-                    handleCheckboxChange(checkbox, true);
-                }
-            });
+            loadCheckboxState();
         });
-        </script>
-    </body>
+    </script>
+</body>
 </html>
