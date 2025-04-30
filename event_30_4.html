@@ -6,56 +6,58 @@
     <link rel="icon" href="http://tieulinhhota.com/assets/images/favicon.jpg" type="image/x-icon">
     <style>
         #passwordInput {
-        width: 350px;
-        padding: 10px;
-        margin-bottom: 12px;
-        border: 2px solid #ff4c4c; /* Đường viền đỏ */
-        border-radius: 8px;
-        background-color: #222; /* Nền đen */
-        color: white;
-        font-size: 18px;
-        font-family: 'Arial', sans-serif;
-        outline: none;
-        transition: all 0.3s ease;
+            width: 350px;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 2px solid #ff4c4c;
+            border-radius: 8px;
+            background-color: #222;
+            color: white;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
         }
 
         #passwordInput::placeholder {
-        color: #bbb; /* Màu placeholder xám */
+            color: #bbb;
         }
 
         #passwordInput:focus {
-        border-color: #f72b2b; /* Đổi màu viền khi focus */
-        background-color: #333; /* Đổi nền khi focus */
+            border-color: #f72b2b;
+            background-color: #333;
         }
 
         #checkPasswordBtn {
-        padding: 12px 24px;
-        font-size: 16px;
-        font-weight: bold;
-        color: white;
-        background-color: #ff4c4c;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff4c4c;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
         #checkPasswordBtn:hover {
-        background-color: #f72b2b; /* Đổi màu nền khi hover */
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(255, 76, 76, 0.6);
+            background-color: #f72b2b;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 76, 76, 0.6);
         }
 
         #checkPasswordBtn:active {
-        transform: scale(0.98);
+            transform: scale(0.98);
         }
+
         body {
             font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #222, #444);
             color: #f5f5f5;
             padding: 20px;
         }
+
         h1 {
             color: #ff4c4c;
             text-align: center;
@@ -65,6 +67,7 @@
             letter-spacing: 2px;
             text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
         }
+
         .flag-container {
             position: relative;
             width: 400px;
@@ -76,9 +79,11 @@
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
             transition: transform 0.5s ease;
         }
+
         .flag-container:hover {
             transform: rotate(0deg);
         }
+
         .overlay-piece {
             position: absolute;
             width: 5%;
@@ -88,13 +93,16 @@
             border: 2px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
+
         .overlay-piece:hover {
             transform: scale(1.1);
             background-color: rgba(255, 0, 0, 0.8);
         }
+
         .hidden {
             opacity: 0;
         }
+
         table {
             width: 100%;
             max-width: 1400px;
@@ -104,28 +112,34 @@
             border-radius: 8px;
             overflow: hidden;
         }
+
         th, td {
             padding: 12px;
             border-bottom: 1px solid #444;
             text-align: left;
         }
+
         th {
             background-color: #222;
             color: #ff4c4c;
             font-size: 18px;
             letter-spacing: 1px;
         }
+
         td {
             background-color: #444;
             color: #f5f5f5;
             font-size: 16px;
         }
+
         tr:nth-child(even) {
             background-color: #555;
         }
+
         tr:nth-child(odd) {
             background-color: #666;
         }
+
         input[type="checkbox"] {
             width: 20px;
             height: 20px;
@@ -134,29 +148,35 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         input[type="checkbox"]:checked {
             background-color: #ff4c4c;
         }
+
         input[type="checkbox"]:hover {
             background-color: #f72b2b;
         }
+
         @media (max-width: 600px) {
-        .flag-container {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 3 / 2;
+            .flag-container {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3 / 2;
+            }
+            .overlay-piece {
+                height: 100%;
+            }
         }
-        .overlay-piece {
-            height: 100%;
-        }
-        }
+
         tr.selected {
             background-color: #4CAF50;
             color: white;
         }
+
         tr.selected td {
             background-color: #4CAF50;
         }
+
         .rule-button {
             position: fixed;
             bottom: 20px;
@@ -173,15 +193,18 @@
             transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             z-index: 1000;
         }
+
         .rule-button:hover {
             background-color: #f72b2b;
             transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
+
         .rule-button:focus {
             outline: none;
             box-shadow: 0 0 0 4px rgba(255, 76, 76, 0.7);
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -193,6 +216,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding-top: 60px;
         }
+
         .modal-content {
             background-color: #333;
             margin: 5% auto;
@@ -202,6 +226,7 @@
             max-width: 600px;
             color: #f5f5f5;
         }
+
         .close-btn {
             color: #ff4c4c;
             font-size: 30px;
@@ -211,14 +236,17 @@
             right: 25px;
             cursor: pointer;
         }
+
         .close-btn:hover {
             color: #f72b2b;
         }
+
         #checkboxTable tr:first-child {
             filter: none;
             pointer-events: auto;
             opacity: 1;
         }
+
         #challengeModal .modal-content {
             background-color: #2a2a2a;
             color: #f5f5f5;
@@ -228,12 +256,14 @@
             overflow-y: auto;
             box-shadow: 0 0 20px rgba(255, 76, 76, 0.4);
         }
+
         #challengeModal h2 {
             color: #ff4c4c;
             text-align: center;
             margin-bottom: 20px;
             text-shadow: 1px 1px 5px rgba(255, 76, 76, 0.4);
         }
+
         #challengeList li {
             background-color: #444;
             border: 1px solid #555;
@@ -242,10 +272,12 @@
             border-radius: 6px;
             transition: transform 0.2s, background-color 0.3s;
         }
+
         #challengeList li:hover {
             background-color: #555;
             transform: scale(1.02);
         }
+
         #challengeModal input[type="text"] {
             background-color: #333;
             border: 1px solid #555;
@@ -255,10 +287,12 @@
             margin-bottom: 10px;
             transition: border-color 0.3s;
         }
+
         #challengeModal input[type="text"]:focus {
             border-color: #ff4c4c;
             outline: none;
         }
+
         #addChallenge {
             background-color: #00b0ff;
             color: white;
@@ -282,11 +316,89 @@
             transform: scale(0.97);
         }
 
+        /* Khung nền modal */
+        #vietnamModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            overflow: auto; /* Cho phép cuộn toàn modal */
+            padding: 40px 20px;
+        }
+
+        /* Nội dung bên trong */
+        #vietnamModal .modal-content {
+            background: linear-gradient(135deg, #ff4c4c, #ffd700);
+            color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: zoomIn 0.5s ease;
+        }
+
+        #vietnamModal h2 {
+            color: #fff;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #vietnamModal img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        #vietnamModal p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        #vietnamModal .action-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff4c4c;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #vietnamModal .action-btn:hover {
+            background-color: #f72b2b;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 76, 76, 0.6);
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
     <script>
-        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBWG6exyWmdMZoOr-WJ-SOrYoBqxsP9F_w",
             authDomain: "tieulinhhota-30-4.firebaseapp.com",
@@ -351,6 +463,54 @@
             <p>8. Thời gian tham gia: từ 00:00 ngày 30/04 đến 23:59 ngày 01/05.</p>
         </div>
     </div>
+    <div id="vietnamModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeVietnamModal">×</span>
+            <h2>Việt Nam – Ý chí vượt nghìn năm bão táp</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/1200px-Flag_of_Vietnam.svg.png" 
+                 alt="Vietnam Flag" class="vietnam-flag">
+            
+            <p>Hơn <strong>1.000 năm Bắc thuộc</strong>, <strong>100 năm thực dân đô hộ</strong> – mỗi trang sử là một minh chứng cho ý chí bất khuất, khát vọng độc lập của dân tộc Việt Nam.</p>
+            
+            <p><strong>30/4/1975</strong> – một mốc son chói lọi trong lịch sử, khép lại ba thập kỷ chia cắt đau thương và mở ra kỷ nguyên mới, đánh dấu:</p>
+            
+            <ul>
+                <li>– Một dải đất liền mạch, thống nhất từ Bắc vào Nam, không còn vết cắt chia đôi</li>
+                <li>– Một dân tộc đứng dưới cùng một ngọn cờ đỏ sao vàng, cùng nhịp đập yêu nước</li>
+                <li>– Một tương lai bắt đầu bằng hòa bình, tái thiết và khát vọng vươn lên</li>
+            </ul>
+            
+            <p>Học lịch sử không phải để nuôi hận thù, mà để khắc ghi:  
+                <br><strong>“Yêu nước không phải là giữ trong lòng niềm tự hào về quá khứ, mà là hành động để xây dựng tương lai.”</strong>
+            </p>
+            
+            <p><strong>Đất Nước</strong> – một phần trong bài thơ nổi tiếng của Nguyễn Khoa Điềm:</p>
+        
+            <div class="poem">
+                <p>"Khi ta lớn lên Đất Nước đã có rồi"</p>
+                <p>"Đất Nước có trong những cái “ngày xửa ngày xưa...” mẹ thường hay kể"</p>
+                <p>"Đất Nước bắt đầu với miếng trầu bây giờ bà ăn"</p>
+                <p>"Đất Nước lớn lên khi dân mình biết trồng tre mà đánh giặc"</p>
+                <p>"Tóc mẹ thì bới sau đầu"</p>
+                <p>"Cha mẹ thương nhau bằng gừng cay muối mặn"</p>
+                <p>"Cái kèo, cái cột thành tên"</p>
+                <p>"Hạt gạo phải một nắng hai sương xay, giã, giần, sàng"</p>
+                <p>"Đất Nước có từ ngày đó..."</p>
+            </div>
+        
+            <div class="poem">
+                <p>"Đất là nơi anh đến trường"</p>
+                <p>"Nước là nơi em tắm"</p>
+                <p>"Đất Nước là nơi ta hò hẹn"</p>
+                <p>"Đất Nước là nơi em đánh rơi chiếc khăn trong nỗi nhớ thầm"</p>
+                <p>"Đất là nơi “con chim phượng hoàng bay về hòn núi bạc”"</p>
+            </div>
+        
+            <button class="action-btn" onclick="window.open('https://en.wikipedia.org/wiki/Vietnam', '_blank')">
+                Tìm hiểu lịch sử
+            </button>
+        </div>
+    </div>
     <script>
         const challengeButton = document.getElementById('challengeButton');
         const challengeModal = document.getElementById('challengeModal');
@@ -388,7 +548,6 @@
             if (enteredPassword === 'tieulinhhota') {
                 isPasswordCorrect = true;
                 alert('Mật khẩu chính xác! Bạn có thể xóa thử thách và chỉnh sửa checkbox.');
-                // Enable all checkboxes
                 const checkboxes = document.querySelectorAll('#checkboxTable input[type="checkbox"]');
                 checkboxes.forEach(checkbox => {
                     checkbox.disabled = false;
@@ -621,7 +780,7 @@
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.dataset.index = row.id;
-            checkbox.disabled = true; // Disable checkbox by default
+            checkbox.disabled = true;
             tdCheckbox.appendChild(checkbox);
 
             const tdContent = document.createElement('td');
@@ -651,6 +810,7 @@
                 } else {
                     checkedStatus[index] = false;
                 }
+                checkAllCheckboxes();
                 
                 await docRef.set({ checkedStatus }, { merge: true });
             } catch (err) {
@@ -663,13 +823,13 @@
                 const doc = await db.collection("checkbox_status").doc("global").get();
                 const checkedStatus = doc.exists ? doc.data().checkedStatus : {};
                 Object.keys(checkedStatus).forEach(index => {
-                    console.log(checkedStatus, index);
                     const checkbox = checkboxTable.querySelector(`input[data-index="${index}"]`);
-                    if (checkbox && checkedStatus[index] === true) { // Chỉ check nếu giá trị là true
+                    if (checkbox && checkedStatus[index] === true) {
                         checkbox.checked = true;
                         handleCheckboxChange(checkbox, true);
                     }
                 });
+                checkAllCheckboxes();
             } catch (err) {
                 console.error(`Lỗi khi tải trạng thái checkbox: ${err.message}`);
             }
@@ -697,6 +857,17 @@
             }
         }
 
+        // Function to check if all checkboxes are checked
+        function checkAllCheckboxes() {
+            const checkboxes = document.querySelectorAll('#checkboxTable input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+            console.log(allChecked);
+            if (allChecked) {
+                const vietnamModal = document.getElementById('vietnamModal');
+                vietnamModal.style.display = 'block';
+            }
+        }
+
         checkboxTable.addEventListener('change', (e) => {
             if (e.target.type === 'checkbox') {
                 handleCheckboxChange(e.target);
@@ -718,6 +889,20 @@
         window.addEventListener('click', (event) => {
             if (event.target === ruleModal) {
                 ruleModal.style.display = 'none';
+            }
+        });
+
+        // Vietnam Modal controls
+        const vietnamModal = document.getElementById('vietnamModal');
+        const closeVietnamModal = document.getElementById('closeVietnamModal');
+
+        closeVietnamModal.addEventListener('click', () => {
+            vietnamModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === vietnamModal) {
+                vietnamModal.style.display = 'none';
             }
         });
 
