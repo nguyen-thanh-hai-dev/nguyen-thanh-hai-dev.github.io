@@ -649,7 +649,7 @@
                 if (checked) {
                     checkedStatus[index] = true;
                 } else {
-                    delete checkedStatus[index];
+                    checkedStatus[index] = false;
                 }
                 
                 await docRef.set({ checkedStatus }, { merge: true });
@@ -663,8 +663,9 @@
                 const doc = await db.collection("checkbox_status").doc("global").get();
                 const checkedStatus = doc.exists ? doc.data().checkedStatus : {};
                 Object.keys(checkedStatus).forEach(index => {
+                    console.log(checkedStatus, index);
                     const checkbox = checkboxTable.querySelector(`input[data-index="${index}"]`);
-                    if (checkbox) {
+                    if (checkbox && checkedStatus[index] === true) { // Chỉ check nếu giá trị là true
                         checkbox.checked = true;
                         handleCheckboxChange(checkbox, true);
                     }
