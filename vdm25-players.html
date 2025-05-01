@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>List Player of VietNam Duel Masters 2025</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+
+
+  <link rel="icon" href="assets/images/favicon.jpg" type="image/x-icon">
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .dt-button.buttons-copy {
+        background-color: #007bff !important;  
+        color: white;            
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .dt-button.buttons-copy:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
+    #datatables_buttons_info {
+        background-color: #007bff !important;
+    }
+
+
+      #date-filter {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+      }
+      
+      #date-filter label {
+        font-weight: bold;
+      }
+      
+      #date-filter input[type="text"] {
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        min-width: 140px;
+        transition: border-color 0.3s;
+      }
+      
+      #date-filter input[type="text"]:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+
+      h2 a {
+        text-decoration: none;
+        font-family: "Orbitron", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+        position: relative;
+        margin-left: 35%;
+      }
+      
+      h2 a:hover {
+        text-decoration: underline;
+      }
+      
+      #load-data {
+        background: linear-gradient(45deg, #ff6b00, #ff8f00);
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        box-shadow: 0 0 5px rgba(255, 107, 0, 0.3), 0 4px 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      #load-data:hover {
+        background: linear-gradient(45deg, #ff8f00, #ff6b00);
+        box-shadow: 0 0 15px rgba(255, 107, 0, 0.5), 0 4px 15px rgba(255, 107, 0, 0.7);
+      }
+      
+      #load-data:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      #load-data:active {
+        background: linear-gradient(45deg, #ff6b00, #ff4500);
+        transform: translateY(2px);
+      }
+      
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #e0e0e0;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        overflow-x: hidden;
+        background-image: url("http://tieulinhhota.com/assets/images/root_theme.jpeg");
+        background-blend-mode: overlay;
+        position: relative;
+      }
+      
+      h2 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 107, 0, 0.7);
+        position: relative;
+      }
+      
+      h2::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background: #ff6b00;
+        bottom: -8px;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+        box-shadow: 0 0 10px #ff6b00;
+      }
+      
+      h2:hover::after {
+        transform: scaleX(1);
+      }
+      
+      #date-range {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        color: #b0b8c4;
+        font-style: italic;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px rgba(255, 107, 0, 0.3);
+      }
+      
+      #date-filter {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      
+      #date-filter label {
+        color: #a42626;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+      }
+      
+      #date-filter input[type="date"] {
+        background: rgba(20, 20, 40, 0.9);
+        color: #e0e0e0;
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        border-radius: 5px;
+        padding: 8px;
+        transition: box-shadow 0.3s ease;
+      }
+      
+      #date-filter input[type="date"]:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      #date-filter input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(0.8) brightness(1.5);
+      }
+      
+      #stats {
+        background: rgba(20, 20, 40, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        font-size: 16px;
+        line-height: 1.8;
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        animation: glow 2s infinite alternate;
+        min-height: 80px;
+      }
+      
+      #stats strong {
+        color: #ff6b00;
+        text-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+      }
+
+      .table-container {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    #main-table {
+        width: 100% !important;
+        table-layout: auto;
+    }
+
+    .dataTables_length {
+        display: none;
+    }
+      
+    table {
+        width: 100%;
+        background: rgba(20, 20, 40, 0.9);
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+      table.dataTable thead th {
+        background: linear-gradient(45deg, #ff6b00, #ff8f00);
+        color: #fff;
+        font-family: "Orbitron", sans-serif;
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 15px;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        border-bottom: 2px solid rgba(255, 107, 0, 0.5);
+      }
+      
+      table.dataTable tbody td {
+        color: #e0e0e0;
+        font-size: 14px;
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        transition: background 0.3s ease;
+      }
+      
+      table.dataTable tbody tr:hover td {
+        background: rgba(255, 107, 0, 0.1);
+      }
+      
+      .dataTables_wrapper .dataTables_filter {
+        margin-bottom: 20px;
+      }
+      
+      .dataTables_wrapper .dataTables_filter label {
+        color: #e0e0e0;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+      }
+      
+      .dataTables_wrapper .dataTables_filter input {
+        background: rgba(20, 20, 40, 0.9);
+        color: #e0e0e0;
+        border: 1px solid rgba(255, 107, 0, 0.5);
+        border-radius: 5px;
+        padding: 8px;
+        transition: box-shadow 0.3s ease;
+      }
+      
+      .dataTables_wrapper .dataTables_filter input:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+      }
+      
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 40px rgba(255, 107, 0, 0.5);
+        }
+      }
+      
+      @media (max-width: 992px) {
+        body {
+          padding: 20px;
+        }
+      
+        h2 {
+          font-size: 28px;
+        }
+      
+        #stats {
+          padding: 15px;
+          font-size: 14px;
+        }
+      
+        table.dataTable thead th {
+          font-size: 14px;
+          padding: 10px;
+        }
+      
+        table.dataTable tbody td {
+          font-size: 12px;
+          padding: 10px;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        h2 {
+          font-size: 24px;
+        }
+      
+        #date-range {
+          font-size: 14px;
+        }
+      
+        #stats {
+          padding: 10px;
+          font-size: 12px;
+        }
+      
+        .dataTables_wrapper .dataTables_filter input {
+          padding: 6px;
+          font-size: 12px;
+        }
+      
+        #date-filter {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+  </style>
+</head>
+<body>
+    <h2>List Player of VietNam Duel Masters 2025</h2>
+    <div class="table-container">
+        <table id="main-table" class="display">
+        <thead>
+            <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Platform Live</th>
+            <th>Note</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+  
+    <script>
+        const data = [
+        {
+            'name': 'Wenture1982',
+            'rating': '200',
+            'platform': 'https://www.twitch.tv/wenture1982',
+            'note': ''
+        },
+        {
+            'name': 'Hi Tech Machine',
+            'rating': '200',
+            'platform': 'https://www.twitch.tv/hitechmachine',
+            'note': '13~16th MDGA'
+        },
+        {
+            'name': 'H34D',
+            'rating': '330',
+            'platform': 'https://www.twitch.tv/h34dhunt3r',
+            'note': 'Other platform https://www.youtube.com/@h34d'
+        },
+        {
+            'name': 'IPlayForLove',
+            'rating': '350',
+            'platform': 'https://www.twitch.tv/iplayforlove_',
+            'note': ''
+        },
+        {
+            'name': 'Eldarion',
+            'rating': '300',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'StygianOne',
+            'rating': '250',
+            'platform': 'https://www.twitch.tv/StygianOne',
+            'note': ''
+        },
+        {
+            'name': 'ferrydongerz',
+            'rating': '136',
+            'platform': 'https://www.twitch.tv/ferrydongerz',
+            'note': ''
+        },
+        {
+            'name': 'Hattrick98tb',
+            'rating': '130',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Skalimse',
+            'rating': '250',
+            'platform': 'https://www.twitch.tv/skalimse',
+            'note': ''
+        },
+        {
+            'name': 'drakisha',
+            'rating': '400',
+            'platform': 'https://www.twitch.tv/drakishaa',
+            'note': ''
+        },
+        {
+            'name': 'Skorses',
+            'rating': '150',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Palber',
+            'rating': '200',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Eddward',
+            'rating': '100',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Daxidek',
+            'rating': '150',
+            'platform': 'Discord/twitch',
+            'note': ''
+        },
+        {
+            'name': 'Hopeless2k1',
+            'rating': '300',
+            'platform': 'Discord',
+            'note': "Vietnam's number one young talent!"
+        },
+        {
+            'name': 'Rererror',
+            'rating': '150',
+            'platform': 'https://www.twitch.tv/77_igreqkajhye_77',
+            'note': ''
+        },
+        {
+            'name': 'tim101',
+            'rating': '500',
+            'platform': 'https://www.twitch.tv/timoor101',
+            'note': '7-8th MDGA'
+        },
+        {
+            'name': 'Dolphin123',
+            'rating': '200',
+            'platform': 'https://www.youtube.com/@duc88cao25',
+            'note': ''
+        },
+        {
+            'name': 'stan2',
+            'rating': '500',
+            'platform': 'https://live.bilibili.com/31681887',
+            'note': ''
+        },
+        {
+            'name': 'Mphuong113',
+            'rating': '100',
+            'platform': 'https://www.youtube.com/channel/UCCAkMK3MQ8xULmQzvICGKbQ',
+            'note': ''
+        },
+        {
+            'name': 'zlaolang2',
+            'rating': '400',
+            'platform': 'http://live.bilibili.com/25549318',
+            'note': ''
+        },
+        {
+            'name': 'WujekEvil',
+            'rating': '320',
+            'platform': 'https://www.twitch.tv/wujekevil',
+            'note': ''
+        },
+        {
+            'name': 'bulooboolu',
+            'rating': '300',
+            'platform': 'https://b23.tv/54iDrJZ',
+            'note': ''
+        },
+        {
+            'name': 'Wojtek121',
+            'rating': '500',
+            'platform': 'https://www.twitch.tv/Wojtek121114',
+            'note': '7-8th MDGA'
+        },
+        {
+            'name': 'Danis94',
+            'rating': '340',
+            'platform': 'https://www.twitch.tv/danis20',
+            'note': ''
+        },
+        {
+            'name': 'beo xxx',
+            'rating': '60',
+            'platform': 'Discord',
+            'note': "King of 'chè cháo'"
+        },
+        {
+            'name': 'Armkowy',
+            'rating': '150',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'mel0k',
+            'rating': '243',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'chanshi',
+            'rating': '450',
+            'platform': 'https://live.bilibili.com/32449293',
+            'note': ''
+        },
+        {
+            'name': 'JNMK',
+            'rating': '80',
+            'platform': 'https://twitch.tv/jn_mk',
+            'note': ''
+        },
+        {
+            'name': 'Drunk Master',
+            'rating': '90',
+            'platform': 'https://www.twitch.tv/mcdrunkmasterbeat',
+            'note': ''
+        },
+        {
+            'name': 'LumpMisak',
+            'rating': '143',
+            'platform': 'https://www.twitch.tv/lumpmisak',
+            'note': ''
+        },
+        {
+            'name': 'lingdu',
+            'rating': '300',
+            'platform': 'http://live.bilibili.com/12630570',
+            'note': ''
+        },
+        {
+            'name': 'popelschwein',
+            'rating': '200',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'anbe213',
+            'rating': '150',
+            'platform': 'discord',
+            'note': ''
+        },
+        {
+            'name': 'Avienq',
+            'rating': '500',
+            'platform': 'https://www.twitch.tv/vienq_',
+            'note': ''
+        },
+        {
+            'name': 'Gancek94',
+            'rating': '320',
+            'platform': 'Discord',
+            'note': ''
+        },
+            {
+            'name': 'RitoSux',
+            'rating': '700',
+            'platform': 'https://www.twitch.tv/ritosux/',
+            'note': "I assume that 750 is your highest possible rank, so I'll set mine to 700"
+        },
+        {
+            'name': 'Dupiarz69',
+            'rating': '300',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'AME-GOD',
+            'rating': '170',
+            'platform': 'https://www.twitch.tv/ameoflostmidlane',
+            'note': 'COAT -> 😭 Of All Tiem'
+        },
+        {
+            'name': 'MeBadboy',
+            'rating': '450',
+            'platform': 'https://www.twitch.tv/mebadboyz',
+            'note': ''
+        },
+        {
+            'name': 'Blacki',
+            'rating': '200',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Songo700',
+            'rating': '630',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Zgod',
+            'rating': '450',
+            'platform': 'https://live.bilibili.com/14087418',
+            'note': ''
+        },
+        {
+            'name': 'Horakhty',
+            'rating': '?',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'ikay',
+            'rating': '150',
+            'platform': 'Discord',
+            'note': ''
+        },
+            {
+            'name': 'tomek1680',
+            'rating': '173',
+            'platform': 'discord',
+            'note': ''
+        },
+        {
+            'name': 'Easy2',
+            'rating': '700',
+            'platform': 'https://www.twitch.tv/easy2image',
+            'note': ''
+        },
+        {
+            'name': 'shyaken',
+            'rating': '27',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'chip',
+            'rating': '0',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Kokonut mall',
+            'rating': '550',
+            'platform': 'https://www.twitch.tv/ordulops007',
+            'note': '5-6th MDGA | Dừa'
+        },
+        {
+            'name': 'Minatow',
+            'rating': '150',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Plakk',
+            'rating': '0',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Fallenpistil',
+            'rating': '300',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Poliszczynie',
+            'rating': '450',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Rosomak91',
+            'rating': '308',
+            'platform': 'https://www.twitch.tv/rosomakk2137',
+            'note': ''
+        },
+        {
+            'name': 'Arbiii',
+            'rating': '310',
+            'platform': 'https://www.twitch.tv/arbillek',
+            'note': ''
+        },
+        {
+            'name': 'Kenye',
+            'rating': '350',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Millerus',
+            'rating': '200',
+            'platform': 'https://www.twitch.tv/kleiq',
+            'note': ''
+        },
+        {
+            'name': 'Str3tch',
+            'rating': '20',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Froz3n_K1ng_9',
+            'rating': '30',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'TvojaMama666',
+            'rating': '150',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Susse',
+            'rating': '0',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'Cauut',
+            'rating': '100',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'PjuraIII',
+            'rating': '100',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'BomberBird',
+            'rating': '200',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'az987987',
+            'rating': '150',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'MousePower',
+            'rating': '500',
+            'platform': 'https://www.twitch.tv/lmousepowerl',
+            'note': ''
+        }, 
+        {
+            'name': 'roogoos',
+            'rating': '412',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'Adams91',
+            'rating': '90',
+            'platform': 'https://www.twitch.tv/csa1991',
+            'note': ''
+        }, 
+        {
+            'name': 'Faloco',
+            'rating': '174',
+            'platform': 'https://www.twitch.tv/faloco99',
+            'note': ''
+        },  
+        {
+            'name': 'Zuuzel',
+            'rating': '220',
+            'platform': 'https://www.twitch.tv/zuuzel',
+            'note': ''
+        },  
+        {
+            'name': '_imi_ima',
+            'rating': '200',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'Kucharzz',
+            'rating': '50',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'Adikobe',
+            'rating': '23',
+            'platform': 'Discord',
+            'note': ''
+        },  
+        {
+            'name': 'chessburger97',
+            'rating': '48',
+            'platform': 'Discord',
+            'note': ''
+        },
+        {
+            'name': 'Tokyo Revenger',
+            'rating': '?',
+            'platform': 'https://www.twitch.tv/un_lucks',
+            'note': '2nd MDGA'
+        },
+        {
+            'name': 'Renni_x',
+            'rating': '?',
+            'platform': 'https://www.twitch.tv/renni_the_bwoha',
+            'note': '3nd MDGA'
+        },
+        {
+            'name': 'Gongwazy',
+            'rating': '?',
+            'platform': 'https://www.twitch.tv/gongwazy',
+            'note': '4th MDGA'
+        },
+        {
+            'name': 'Roniu',
+            'rating': '?',
+            'platform': 'https://www.twitch.tv/roniu1/',
+            'note': '5th~6th MDGA'
+        },
+        {
+            'name': 'Filipuk',
+            'rating': '?',
+            'platform': 'https://www.youtube.com/@FilipukH3',
+            'note': '9-12th MDGA'
+        },
+        {
+            'name': 'Lexiav',
+            'rating': '?',
+            'platform': 'https://www.twitch.tv/lexiav',
+            'note': '9-12th MDGA'
+        },
+        {
+            'name': 'TieuLinh Hota',
+            'rating': '?',
+            'platform': 'https://www.youtube.com/@TieulinhHOTA',
+            'note': '9-12th MDGA'
+        },
+        {
+            'name': 'Browntown',
+            'rating': '?',
+            'platform': '',
+            'note': '13~16th MDGA'
+        },
+        {
+            'name': 'Gluhammer',
+            'rating': '?',
+            'platform': '',
+            'note': '13~16th MDGA'
+        }
+        ];
+      $(document).ready(function() {
+        $('#main-table').DataTable({
+          scrollX: true,
+          autoWidth: false,
+          paging: false,
+          dom: 'Bfrtip',
+          buttons: [
+            {
+                extend: 'copy',
+                text: 'Copy List Player Name',
+                exportOptions: {
+                columns: [1]
+                }
+            }
+          ],
+          data: data.map((item, index) => [
+            index + 1,
+            item.name,
+            parseInt(item.rating),
+            item.platform,
+            item.note
+          ])
+        });
+      });
+      
+    </script>
+  </body>
+</html>
