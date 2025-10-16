@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietnam Duel Pro League Season 2</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts với preload -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" as="style" onload="this.rel='stylesheet'">
+  <!-- Custom CSS (nếu có file styles.css riêng) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white font-poppins">
+  <!-- Hero Section -->
+  <section id="hero" class="h-screen flex items-center justify-center bg-cover bg-center relative">
+    <div class="absolute inset-0 bg-black bg-opacity-5"></div>
+    <div class="text-center relative z-10">
+      <h1 class="text-6xl font-orbitron text-amber-400 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)] animate-fade-in">
+        Vietnam Duel Pro League Season 2
+      </h1>
+      <p class="text-lg md:text-xl mt-4 text-white font-semibold animate-fade-in-delay">
+        Chiến lược là vũ khí, chiến thắng là vinh quang!!!
+      </p>
+    </div>
+  </section>
+
+  <!-- Tournament Info Section -->
+  <section id="tournament-info" class="py-16 px-4 md:px-8 lg:px-16 bg-gray-800">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-orbitron text-purple-400 text-center mb-12 animate-slide-up">
+        GIẢI ĐẤU VIETNAM DUEL PRO LEAGUE SEASON 2
+      </h2>
+      <div class="space-y-8">
+        <!-- Tổ chức và Nhà tài trợ -->
+        <section class="bg-gray-800 p-6 rounded-xl shadow-lg text-center animate-slide-up-delay">
+          <h3 class="text-2xl font-orbitron text-amber-400 mb-4">Giải đấu do <strong>Tieulinh HOTA</strong> tổ chức</h3>
+          <p class="text-lg font-semibold text-gray-200 mb-4">Nhà tài trợ</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <span class="bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-purple-600 hover:scale-105 transition-all duration-300 shadow-md">Nhiệt luyện Công Danh</span>
+            <span class="bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-purple-600 hover:scale-105 transition-all duration-300 shadow-md">Mr. Phuong Bui</span>
+            <span class="bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-purple-600 hover:scale-105 transition-all duration-300 shadow-md">Đồng hồ ICS Authentic</span>
+            <span class="bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-purple-600 hover:scale-105 transition-all duration-300 shadow-md">Anbe213</span>
+          </div>
+        </section>
+
+        <!-- Tổng giải thưởng -->
+        <section class="bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up-delay-2">
+          <h3 class="text-2xl font-orbitron text-amber-400 mb-4">Tổng giải thưởng: 20.000.000 VNĐ</h3>
+          <ul class="space-y-3 text-gray-200">
+            <li class="flex justify-between items-center p-2 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors">
+              <span class="font-semibold">Vô địch</span><span class="font-semibold text-amber-400">8.000.000 VNĐ</span>
+            </li>
+            <li class="flex justify-between items-center p-2 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors">
+              <span class="font-semibold">Á quân</span><span class="font-semibold text-amber-400">4.000.000 VNĐ</span>
+            </li>
+            <li class="flex justify-between items-center p-2 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors">
+              <span class="font-semibold">Hạng 3-4</span><span class="font-semibold text-amber-400">2.000.000 VNĐ</span>
+            </li>
+            <li class="flex justify-between items-center p-2 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors">
+              <span class="font-semibold">Hạng 5-6</span><span class="font-semibold text-amber-400">1.000.000 VNĐ</span>
+            </li>
+            <li class="flex justify-between items-center p-2 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors">
+              <span class="font-semibold">Break sớm nhất</span><span class="font-semibold text-amber-400">1.000.000 VNĐ</span>
+            </li>
+            <li class="flex justify-between items-center p-2 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors">
+              <span class="font-semibold">Chuỗi thắng dài nhất</span><span class="font-semibold text-amber-400">1.000.000 VNĐ</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Giải phụ -->
+        <section class="bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up-delay-3">
+          <h3 class="text-xl font-orbitron text-purple-400 mb-4">Giải phụ: Không chọn Logistics & Scouting</h3>
+          <p class="text-gray-300">Thắng trận khi hero có đủ 8 kỹ năng mà không chọn Logistics hoặc Scouting. Nếu nhiều người đạt, người có tổng chỉ số cơ bản cao nhất (không tính trang bị) sẽ thắng.</p>
+          <p class="mt-3 font-semibold text-amber-400">Phần thưởng: 1.000.000 VNĐ</p>
+          <p class="mt-2 text-gray-300">Nhà tài trợ: <strong>Xu Changjin</strong></p>
+        </section>
+
+        <!-- Template và Số lượng người chơi -->
+        <section class="grid md:grid-cols-2 gap-6 animate-slide-up-delay-4">
+          <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+            <h3 class="text-lg font-orbitron text-amber-400 mb-2">Template thi đấu</h3>
+            <p class="text-gray-300">Duel 2.9c chọn trước thành mid</p>
+            <p class="mt-2"><a href="https://drive.google.com/file/d/10OjCBdgyMnjwv-KzWagbh9dfEVIayWIF/view" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 transition-colors">Link tải</a></p>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-xl shadow-lg">
+            <h3 class="text-lg font-orbitron text-amber-400 mb-2">Số lượng người chơi</h3>
+            <p class="text-gray-300">20</p>
+          </div>
+        </section>
+
+        <!-- Thể lệ và Link theo dõi -->
+        <section class="bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up-delay-5">
+          <h3 class="text-xl font-orbitron text-purple-400 mb-4">Thể lệ & Nội quy</h3>
+          <p class="text-gray-300">Xem chi tiết tại <a href="#nội-quy-giải-đấu" class="text-blue-400 hover:underline hover:text-blue-300 transition-colors">nội-quy-giải-đấu</a></p>
+          <p class="mt-4 text-center">
+            <a href="https://challonge.com/vi/VDPLS2" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg inline-block transition-colors shadow-md hover:shadow-lg">
+              Theo dõi tiến độ & kết quả giải đấu
+            </a>
+          </p>
+        </section>
+      </div>
+
+      <!-- Missions Section -->
+      <section class="mt-12 bg-gray-800 p-6 rounded-xl shadow-lg animate-slide-up-delay-6">
+        <!-- Mô tả tổng quan -->
+        <div>
+          <h3 class="text-xl font-orbitron text-purple-400 mb-4">Quy định nhiệm vụ</h3>
+          <p class="text-center text-gray-300 mb-2">
+            Bắt đầu từ ngày khai mạc, mỗi nhiệm vụ chỉ hoàn thành một lần.
+          </p>
+          <p class="text-center text-gray-300 mb-2">
+            Nộp file save và đăng kết quả tại kênh Discord <a href="https://discord.com/channels/1422920331911364691/1427308081691365397" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 transition-colors">kỷ-lục-giải-đấu-các-loại</a>.
+          </p>
+          <p class="text-center text-gray-300 mb-6">
+            <span class="font-semibold text-amber-400">Phần thưởng: 100.000 - 500.000 VNĐ</span> (công bố sau giải đấu).
+          </p>
+        </div>
+
+        <!-- Tiêu đề chính và danh sách nhiệm vụ -->
+        <h3 class="text-3xl font-orbitron text-green-400 text-center mb-8 animate-slide-up">
+          HỆ THỐNG NHIỆM VỤ CỦA GIẢI ĐẤU
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay">
+            <h4 class="font-orbitron text-purple-400 mb-2">Tamer of Dragons</h4>
+            <p class="text-gray-300">Ăn nhà rồng trước hoặc trong ngày 123 (Tháng 1, tuần 2, ngày 3), thắng trận đấu.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-2">
+            <h4 class="font-orbitron text-purple-400 mb-2">Grail Conqueror</h4>
+            <p class="text-gray-300">Đào Grail và xây thành công tại bất kỳ thành nào, thắng trận đấu.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-3">
+            <h4 class="font-orbitron text-purple-400 mb-2">Wind of the Dragon</h4>
+            <p class="text-gray-300">Ăn nhà rồng ra Tome of Air và trang bị cộng trên 40 chỉ số, thắng trận đấu.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-4">
+            <h4 class="font-orbitron text-purple-400 mb-2">Warmaster</h4>
+            <p class="text-gray-300">Thắng trận đấu khi có ít nhất 2 kỹ năng: Ballistics, First Aid, Artillery.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-5">
+            <h4 class="font-orbitron text-purple-400 mb-2">Archmage</h4>
+            <p class="text-gray-300">Thắng trận đấu khi có Wisdom, Sorcery và 4 phép Earth, Air, Water, Fire.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-6">
+            <h4 class="font-orbitron text-purple-400 mb-2">Chain Breaker</h4>
+            <p class="text-gray-300">Chain rồng phép bị phản phép, sau đó thắng trận đấu (yêu cầu ảnh chụp và log - phím H).</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-7">
+            <h4 class="font-orbitron text-purple-400 mb-2">Tactical Retreat</h4>
+            <p class="text-gray-300">Retreat tướng ít nhất 1 lần, sau đó thắng trận đấu.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-8">
+            <h4 class="font-orbitron text-purple-400 mb-2">Diplomacy Master</h4>
+            <p class="text-gray-300">Thắng trận đấu với quân đội có ít nhất 200 Fangarms.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-9">
+            <h4 class="font-orbitron text-purple-400 mb-2">Library Raider</h4>
+            <p class="text-gray-300">Không chọn Scouting, chiếm ít nhất 4 thư viện trong tuần 3.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-10">
+            <h4 class="font-orbitron text-purple-400 mb-2">Son of Zeus</h4>
+            <p class="text-gray-300">Thắng trận đấu sử dụng Titan's Thunder.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-11">
+            <h4 class="font-orbitron text-purple-400 mb-2">Lucky Strike</h4>
+            <p class="text-gray-300">Thắng trận đấu sử dụng Frenzy và được Morale khi có buff Frenzy.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-12">
+            <h4 class="font-orbitron text-purple-400 mb-2">Dungeon Lord</h4>
+            <p class="text-gray-300">Chơi thành Dungeon, chiếm ít nhất 10 mỏ Manticore, thắng trận đấu.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-13">
+            <h4 class="font-orbitron text-purple-400 mb-2">Fearless Breaker</h4>
+            <p class="text-gray-300">Break trước hoặc trong ngày 124, không dùng Force Field.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-14">
+            <h4 class="font-orbitron text-purple-400 mb-2">Undead Slayer</h4>
+            <p class="text-gray-300">Thắng trận đấu với Ufreetin hoặc Straker (từng trận riêng).</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-15">
+            <h4 class="font-orbitron text-purple-400 mb-2">Minimalist Victory</h4>
+            <p class="text-gray-300">Thắng trận đấu với dưới 6 đơn vị quân (không tính triệu hồi).</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-16">
+            <h4 class="font-orbitron text-purple-400 mb-2">Swift Thief</h4>
+            <p class="text-gray-300">Chiếm thành mid trong 1 turn từ bất kỳ vị trí, dùng Town Portal.</p>
+          </div>
+          <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 transition-all duration-300 animate-slide-up-delay-17">
+            <h4 class="font-orbitron text-purple-400 mb-2">Robinhood</h4>
+            <p class="text-gray-300">Thắng người dẫn đầu bảng xếp hạng (ít nhất 1 trận, từ vòng 11).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chúc mừng cuối cùng -->
+      <p class="text-center text-lg italic text-gray-300 mt-8 animate-slide-up-delay-18">
+        Chúc các bạn thi đấu hết mình và tận hưởng giải đấu!
+      </p>
+    </div>
+  </section>
+
+  <!-- Inline CSS -->
+  <style>
+    /* Font chính */
+    .font-orbitron {
+      font-family: 'Orbitron', sans-serif, Arial, sans-serif;
+    }
+
+    /* Hero Background */
+    #hero {
+      background-image: url('https://scontent.fhan14-4.fna.fbcdn.net/v/t1.6435-9/128374090_3824480164242959_6591092762649603063_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHQWJoG2uMDTK5KK2WD37rNzv_aDSN8MujO_9oNI3wy6JuzB9Reel2ZSsxQP1D3abpcGMxRzZJTijRjpnwTA7Mj&_nc_ohc=agLZDnjYUmsQ7kNvwGX841e&_nc_oc=AdnVim9nQoEEZ9xX-P89OyehGUvV116nTyuW561keD--KZ_SGWvP7bttn26SV9CtzG4&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=e753hB-qWkotp0jsghaGuQ&oh=00_Afc0EwHVaH3_yCJAra0WIPdRKXS9fElXNRKifIGkudX8QQ&oe=6918453E');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      opacity: 0;
+    }
+    .animate-fade-in.start-animation {
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+    .animate-fade-in-delay {
+      animation: fadeIn 1.5s ease-out 0.5s forwards;
+    }
+    .animate-slide-up {
+      animation: slideUp 1s ease-out forwards;
+    }
+    .animate-slide-up-delay { animation: slideUp 1s ease-out 0.2s forwards; }
+    .animate-slide-up-delay-2 { animation: slideUp 1s ease-out 0.4s forwards; }
+    .animate-slide-up-delay-3 { animation: slideUp 1s ease-out 0.6s forwards; }
+    .animate-slide-up-delay-4 { animation: slideUp 1s ease-out 0.8s forwards; }
+    .animate-slide-up-delay-5 { animation: slideUp 1s ease-out 1s forwards; }
+    .animate-slide-up-delay-6 { animation: slideUp 1s ease-out 1.2s forwards; }
+    .animate-slide-up-delay-7 { animation: slideUp 1s ease-out 1.4s forwards; }
+    .animate-slide-up-delay-8 { animation: slideUp 1s ease-out 1.6s forwards; }
+    .animate-slide-up-delay-9 { animation: slideUp 1s ease-out 1.8s forwards; }
+    .animate-slide-up-delay-10 { animation: slideUp 1s ease-out 2s forwards; }
+    .animate-slide-up-delay-11 { animation: slideUp 1s ease-out 2.2s forwards; }
+    .animate-slide-up-delay-12 { animation: slideUp 1s ease-out 2.4s forwards; }
+    .animate-slide-up-delay-13 { animation: slideUp 1s ease-out 2.6s forwards; }
+    .animate-slide-up-delay-14 { animation: slideUp 1s ease-out 2.8s forwards; }
+    .animate-slide-up-delay-15 { animation: slideUp 1s ease-out 3s forwards; }
+    .animate-slide-up-delay-16 { animation: slideUp 1s ease-out 3.2s forwards; }
+    .animate-slide-up-delay-17 { animation: slideUp 1s ease-out 3.4s forwards; }
+    .animate-slide-up-delay-18 { animation: slideUp 1s ease-out 3.6s forwards; }
+
+    /* Custom Styles */
+    .bg-gray-800 {
+      background-color: #1f2937;
+      transition: background-color 0.3s ease;
+    }
+    .shadow-lg {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    .rounded-xl {
+      border-radius: 12px;
+    }
+    .text-gray-300 {
+      color: #d1d5db;
+    }
+    .hover\:scale-105:hover {
+      transform: scale(1.05);
+    }
+    .hover\:shadow-lg:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .text-6xl { font-size: 2.5rem; }
+      .text-4xl { font-size: 2rem; }
+      .text-2xl { font-size: 1.5rem; }
+      .text-lg { font-size: 1rem; }
+      .text-sm { font-size: 0.875rem; }
+      .grid-cols-2 { grid-template-columns: 1fr; }
+      .gap-6 { gap: 1.5rem; }
+      .p-6 { padding: 1.25rem; }
+      .px-8 { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    }
+
+    .mt-10 {
+      margin-top: 2.5rem;
+    }
+  </style>
+
+  <!-- Custom JS for Animations -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.animate-fade-in').classList.add('start-animation');
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-slide-up, .animate-slide-up-delay, .animate-slide-up-delay-2, .animate-slide-up-delay-3, .animate-slide-up-delay-4, .animate-slide-up-delay-5, .animate-slide-up-delay-6, .animate-slide-up-delay-7, .animate-slide-up-delay-8, .animate-slide-up-delay-9, .animate-slide-up-delay-10, .animate-slide-up-delay-11, .animate-slide-up-delay-12, .animate-slide-up-delay-13, .animate-slide-up-delay-14, .animate-slide-up-delay-15, .animate-slide-up-delay-16, .animate-slide-up-delay-17, .animate-slide-up-delay-18').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
